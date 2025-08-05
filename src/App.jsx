@@ -6,19 +6,14 @@ import { useSelector } from "react-redux";
 
 function App() {
   const [value, setValue] = useState("");
-
-  console.log(value);
   const name = useSelector((state) => state.name);
-
   const dispatch = useDispatch();
 
-  // function submitForm(e) {
-  //   e.preventDefault();
-
-  //   dispatch(setName({ name: name }));
-  // }
-
-  dispatch(setName({ name: value }));
+  function submitForm(e) {
+    e.preventDefault();
+    dispatch(setName({ name: value }));
+    setValue("");
+  }
 
   console.log(name);
 
@@ -41,14 +36,16 @@ function App() {
         <p className="welcome-text">
           👋 Welcome! Please start by telling us your name:
         </p>
-        <form>
+        <form onSubmit={submitForm} className="name-form">
           <input
             className="input-name"
             placeholder="Your full name"
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-          <button className="hidden">Submit</button>
+          <button className={`${value.length === 0 ? "hidden" : "order-btn"}`}>
+            Start Ordering
+          </button>
         </form>
       </section>
     </>

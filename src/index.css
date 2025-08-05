@@ -75,13 +75,22 @@ nav p {
   margin-bottom: 15px;
 }
 
+.name-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
 .input-name {
   width: 280px;
   font-size: 14px;
   border: 0.5px solid rgb(176, 176, 176);
   border-radius: 222px;
   background-color: rgba(255, 255, 255, 0);
-  padding: 10px;
+  /* padding: 10px; */
+  height: 44px;
   padding-left: 15px;
   -webkit-transition: all 0.7s ease;
   -moz-transition: all 0.7s ease;
@@ -98,6 +107,19 @@ nav p {
   border: 0.5px solid rgba(176, 176, 176, 0);
   box-shadow: 0 0 0 3px rgb(255, 200, 0);
   outline: none;
+}
+
+.order-btn {
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+  height: 50px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 25px;
+  border-radius: 222px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
 .hidden {
