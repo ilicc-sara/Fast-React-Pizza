@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { useDispatch } from "react-redux";
 import { setName } from "./redux/slice";
@@ -17,6 +17,8 @@ function App() {
 
   console.log(name);
 
+  const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
+
   return (
     <>
       <nav>
@@ -25,6 +27,10 @@ function App() {
           <input className="input-code" placeholder="Search order #" />
           <button className="hidden">Submit</button>
         </form>
+        <p className={`${name.name === "" ? "hidden" : ""}`}>
+          {" "}
+          {name.name.toUpperCase()}{" "}
+        </p>
       </nav>
 
       <section className="home-section">
