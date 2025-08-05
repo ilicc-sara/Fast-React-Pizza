@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = "";
+const initialState = { name: "" };
 
 const nameSlice = createSlice({
   name: "fullName",
   initialState,
   reducers: {
     setName: (state, action) => {
-      state = action.payload;
+      state.name = action.payload.name;
     },
   },
 });

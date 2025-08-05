@@ -1,10 +1,26 @@
 import { useState } from "react";
 import "./App.css";
+import { useDispatch } from "react-redux";
+import { setName } from "./redux/slice";
+import { useSelector } from "react-redux";
 
 function App() {
   const [value, setValue] = useState("");
 
   console.log(value);
+  const name = useSelector((state) => state.name);
+
+  const dispatch = useDispatch();
+
+  // function submitForm(e) {
+  //   e.preventDefault();
+
+  //   dispatch(setName({ name: name }));
+  // }
+
+  dispatch(setName({ name: value }));
+
+  console.log(name);
 
   return (
     <>
