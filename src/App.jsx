@@ -2,6 +2,10 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [value, setValue] = useState("");
+
+  console.log(value);
+
   return (
     <>
       <nav>
@@ -22,7 +26,12 @@ function App() {
           👋 Welcome! Please start by telling us your name:
         </p>
         <form>
-          <input className="input-name" placeholder="Your full name" />
+          <input
+            className="input-name"
+            placeholder="Your full name"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
           <button className="hidden">Submit</button>
         </form>
       </section>
