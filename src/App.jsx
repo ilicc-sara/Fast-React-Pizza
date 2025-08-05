@@ -9,15 +9,32 @@ function App() {
   const name = useSelector((state) => state.name);
   const dispatch = useDispatch();
 
+  // const [menuItems, setMenuItems] = useState([]);
+  // const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     try {
+  //       const response = await fetch(`${url}`);
+  //       const posts = await response.json();
+  //       // console.log(posts.data);
+  //       setMenuItems(posts.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchPost();
+  // }, []);
+
+  // console.log(menuItems);
+
   function submitForm(e) {
     e.preventDefault();
     dispatch(setName({ name: value }));
     setValue("");
   }
 
-  console.log(name);
-
-  const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
+  // console.log(name);
 
   return (
     <>
@@ -52,6 +69,19 @@ function App() {
           <button className={`${value.length === 0 ? "hidden" : "order-btn"}`}>
             Start Ordering
           </button>
+
+          <section className="menu-section">
+            {/*  <ul>
+              {menuItems.length !== 0 &&
+                menuItems.map((item, index) => (
+                  <li key={index}>
+                    <img src={`${item.imageUrl}`} />
+                    <p>{item.name}</p>
+                    <p>{item.unitPrice}</p>
+                  </li>
+                ))}
+            </ul> */}
+          </section>
         </form>
       </section>
     </>
