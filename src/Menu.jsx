@@ -37,7 +37,9 @@ function Menu() {
                 <p> {`${item.soldOut ? "sold out" : "available"}`} </p>
               </div>
 
-              <button className="add-btn">Add to Cart</button>
+              <button className={`${item.soldOut ? "hidden" : "add-btn"}`}>
+                Add to Cart
+              </button>
             </li>
           ))}
       </ul>
