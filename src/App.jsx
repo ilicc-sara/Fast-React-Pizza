@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+
 import { useDispatch } from "react-redux";
 import { setName } from "./redux/slice";
 import { useSelector } from "react-redux";
@@ -54,7 +54,7 @@ function App() {
         </form>
       </section>
 
-      <Menu />
+      {/* <Menu /> */}
     </>
   );
 }

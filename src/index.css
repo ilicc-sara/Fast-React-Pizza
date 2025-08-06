@@ -19,6 +19,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 15px 50px;
+  border-bottom: 0.5px solid rgb(203, 203, 203);
 }
 
 nav p {
@@ -156,6 +157,7 @@ nav p {
 .add-btn {
   height: 30px;
   margin-top: auto;
+  padding: 0 10px;
 }
 
 .hidden {
