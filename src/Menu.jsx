@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
@@ -31,10 +31,20 @@ function Menu() {
                 src={`${item.imageUrl}`}
               />
               <div className="info-text">
-                <p>{item.name}</p>
-                <p>{item.ingredients.join(", ")}</p>
-                <p> $ {item.unitPrice}</p>
-                <p> {`${item.soldOut ? "sold out" : "available"}`} </p>
+                <p className="pizza-name">{item.name}</p>
+                <p className="pizza-ingredients">
+                  {item.ingredients
+                    .map((ing) => ing[0].toUpperCase() + ing.slice(1))
+                    .join(", ")}
+                </p>
+
+                <p className="pizza-prize">
+                  {item.soldOut ? (
+                    <span className="sold-out-span">SOLD OUT</span>
+                  ) : (
+                    `$ ${item.unitPrice.toFixed(2)}`
+                  )}
+                </p>
               </div>
 
               <button className={`${item.soldOut ? "hidden" : "add-btn"}`}>
