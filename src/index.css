@@ -11,6 +11,7 @@
 body {
   background-color: rgba(255, 200, 0, 0.03);
   color: rgb(22, 18, 0);
+  padding-bottom: 20px;
 }
 
 nav {

@@ -10,6 +10,8 @@ function Home() {
   const navigate = useNavigate();
   const name = useSelector((state) => state.name);
 
+  console.log(name);
+
   function submitForm(e) {
     e.preventDefault();
     dispatch(setName({ name: value }));

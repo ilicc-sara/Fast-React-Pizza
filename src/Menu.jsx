@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "./redux/slice";
+import { useSelector } from "react-redux";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
+  const dispatch = useDispatch();
+  const name = useSelector((state) => state.name);
+  console.log(name);
+
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {
     const fetchPost = async () => {
@@ -47,7 +54,14 @@ function Menu() {
                 </p>
               </div>
 
-              <button className={`${item.soldOut ? "hidden" : "add-btn"}`}>
+              <button
+                className={`${item.soldOut ? "hidden" : "add-btn"}`}
+                onClick={() =>
+                  dispatch(
+                    addToCart({ title: item.name, price: item.unitPrice })
+                  )
+                }
+              >
                 Add to Cart
               </button>
             </li>
