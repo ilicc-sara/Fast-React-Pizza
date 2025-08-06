@@ -26,10 +26,15 @@ function Menu() {
         {menuItems.length !== 0 &&
           menuItems.map((item, index) => (
             <li className="menu-item" key={index}>
-              <img className="img-item" src={`${item.imageUrl}`} />
+              <img
+                className={`${item.soldOut ? "sold-out" : ""} img-item`}
+                src={`${item.imageUrl}`}
+              />
               <div className="info-text">
                 <p>{item.name}</p>
-                <p>{item.unitPrice}</p>
+                <p>{item.ingredients.join(", ")}</p>
+                <p> $ {item.unitPrice}</p>
+                <p> {`${item.soldOut ? "sold out" : "available"}`} </p>
               </div>
 
               <button className="add-btn">Add to Cart</button>
