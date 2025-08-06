@@ -24,9 +24,11 @@ function Home() {
         Straight out of the oven, straight to you.
       </h1>
 
-      <p className="welcome-text">
-        👋 Welcome! Please start by telling us your name:
-      </p>
+      {name.name === "" && (
+        <p className="welcome-text">
+          👋 Welcome! Please start by telling us your name:
+        </p>
+      )}
 
       {name.name === "" && (
         <form onSubmit={submitForm} className="name-form">
@@ -44,7 +46,9 @@ function Home() {
 
       {name.name !== "" && (
         <Link to="/menu">
-          <button className={`start-btn`}>Start Ordering, {name.name}</button>
+          <button className={`start-btn`}>
+            Continue Ordering, {name.name}
+          </button>
         </Link>
       )}
     </section>
