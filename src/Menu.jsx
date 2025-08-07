@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const info = useSelector((state) => state.name);
+  console.log(info);
 
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {
@@ -22,7 +23,7 @@ function Menu() {
     fetchPost();
   }, []);
 
-  console.log(menuItems);
+  // console.log(menuItems);
 
   return (
     <section className="menu-section">

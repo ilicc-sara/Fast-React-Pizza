@@ -7,12 +7,10 @@ function MenuItem(props) {
   const { soldOut, img, name, ingredients, price, id } = props;
   const dispatch = useDispatch();
   const info = useSelector((state) => state.name);
-  console.log(info);
 
   const itemIsInCart = info.cart.includes(
     info.cart.find((item) => item.id === id)
   );
-  console.log(itemIsInCart);
 
   return (
     <li className="menu-item">
