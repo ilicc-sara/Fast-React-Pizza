@@ -120,12 +120,19 @@ nav p {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
+  border: 2px solid white;
+}
+
+/* button:active, */
+button:focus {
+  box-shadow: 0 0 0 3px rgb(255, 200, 0);
 }
 
 .menu-items {
   list-style: none;
   margin: 0 auto;
   width: 760px;
+  margin-bottom: 70px;
 }
 
 .menu-items :first-child {
@@ -202,6 +209,11 @@ nav p {
 
 .increase-btn,
 .decrease-btn {
+  border: 2px solid white !important;
+}
+
+.increase-btn,
+.decrease-btn {
   height: 30px;
   width: 30px;
   padding: 5px;
@@ -209,7 +221,6 @@ nav p {
   color: rgb(22, 18, 0);
 
   text-transform: uppercase;
-  border: none;
 
   border-radius: 222px;
 
@@ -231,12 +242,12 @@ nav p {
   color: rgb(22, 18, 0);
 
   text-transform: uppercase;
-  border: none;
 
   border-radius: 222px;
 
   font-size: 12px;
   font-weight: 600;
+  border: 2px solid white;
 }
 
 .add-btn {
@@ -254,6 +265,7 @@ nav p {
 
   font-size: 12px;
   font-weight: 600;
+  border: 2px solid white;
 
   /* letter-spacing: 1px; */
 }
@@ -265,9 +277,12 @@ nav p {
 }
 
 .footer-cart {
-  background-color: rgb(31, 31, 31);
-  height: 100px;
+  background-color: rgb(41 37 36);
+  height: 60px;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 .hidden {
