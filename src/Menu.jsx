@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "./redux/slice";
 import { useSelector } from "react-redux";
+import MenuItem from "./MenuItem";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
-  const dispatch = useDispatch();
+
   const name = useSelector((state) => state.name);
   console.log(name);
 
@@ -25,46 +24,21 @@ function Menu() {
     fetchPost();
   }, []);
 
-  console.log(menuItems);
+  // console.log(menuItems);
 
   return (
     <section className="menu-section">
       <ul className="menu-items">
         {menuItems.length !== 0 &&
           menuItems.map((item, index) => (
-            <li className="menu-item" key={index}>
-              <img
-                className={`${item.soldOut ? "sold-out" : ""} img-item`}
-                src={`${item.imageUrl}`}
-              />
-              <div className="info-text">
-                <p className="pizza-name">{item.name}</p>
-                <p className="pizza-ingredients">
-                  {item.ingredients
-                    .map((ing) => ing[0].toUpperCase() + ing.slice(1))
-                    .join(", ")}
-                </p>
-
-                <p className="pizza-prize">
-                  {item.soldOut ? (
-                    <span className="sold-out-span">SOLD OUT</span>
-                  ) : (
-                    `$ ${item.unitPrice.toFixed(2)}`
-                  )}
-                </p>
-              </div>
-
-              <button
-                className={`${item.soldOut ? "hidden" : "add-btn"}`}
-                onClick={() =>
-                  dispatch(
-                    addToCart({ title: item.name, price: item.unitPrice })
-                  )
-                }
-              >
-                Add to Cart
-              </button>
-            </li>
+            <MenuItem
+              key={index}
+              soldOut={item.soldOut}
+              img={item.imageUrl}
+              name={item.name}
+              ingredients={item.ingredients}
+              price={item.unitPrice}
+            />
           ))}
       </ul>
     </section>
