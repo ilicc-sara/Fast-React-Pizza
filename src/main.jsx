@@ -2,17 +2,17 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./App.css";
 import "./index.css";
-import Nav from "./Nav.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Menu from "./Menu.jsx";
 import Home from "./Home.jsx";
+import SharedLayout from "./layouts/sharedLayout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Nav />,
+    element: <SharedLayout />,
     children: [
       {
         path: "/",
