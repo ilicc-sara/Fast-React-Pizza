@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const info = useSelector((state) => state.name);
   console.log(info);
 
@@ -11,10 +12,12 @@ function Menu() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch(`${url}`);
         const posts = await response.json();
         // console.log(posts.data);
         setMenuItems(posts.data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -27,6 +30,7 @@ function Menu() {
 
   return (
     <section className="menu-section">
+      {isLoading && <div className="loader"></div>}
       <ul className="menu-items">
         {menuItems.length !== 0 &&
           menuItems.map((item, index) => (
