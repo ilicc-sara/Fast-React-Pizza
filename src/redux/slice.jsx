@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 
 const initialState = { name: "", cart: [] };
 
@@ -14,6 +15,7 @@ const nameSlice = createSlice({
         title: action.payload.title,
         amount: 1,
         price: action.payload.price,
+        id: action.payload.id,
       });
     },
   },

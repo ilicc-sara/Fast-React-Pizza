@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import MenuItem from "./MenuItem";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
-
-  const name = useSelector((state) => state.name);
-  console.log(name);
 
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {
@@ -24,7 +20,7 @@ function Menu() {
     fetchPost();
   }, []);
 
-  // console.log(menuItems);
+  console.log(menuItems);
 
   return (
     <section className="menu-section">
@@ -33,6 +29,7 @@ function Menu() {
           menuItems.map((item, index) => (
             <MenuItem
               key={index}
+              id={item.id}
               soldOut={item.soldOut}
               img={item.imageUrl}
               name={item.name}
@@ -41,6 +38,8 @@ function Menu() {
             />
           ))}
       </ul>
+
+      <footer className="footer-cart"></footer>
     </section>
   );
 }

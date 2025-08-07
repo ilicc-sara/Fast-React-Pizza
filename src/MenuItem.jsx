@@ -1,10 +1,18 @@
 import React from "react";
 import { addToCart } from "./redux/slice";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function MenuItem(props) {
-  const { soldOut, img, name, ingredients, price } = props;
+  const { soldOut, img, name, ingredients, price, id } = props;
   const dispatch = useDispatch();
+  const info = useSelector((state) => state.name);
+  console.log(info);
+
+  const itemIsInCart = info.cart.includes(
+    info.cart.find((item) => item.id === id)
+  );
+  console.log(itemIsInCart);
 
   return (
     <li className="menu-item">
@@ -17,21 +25,39 @@ function MenuItem(props) {
             .join(", ")}
         </p>
 
-        <p className="pizza-prize">
-          {soldOut ? (
-            <span className="sold-out-span">SOLD OUT</span>
-          ) : (
-            `$ ${price.toFixed(2)}`
-          )}
-        </p>
+        {!itemIsInCart ? (
+          <p className="pizza-price">
+            {soldOut ? (
+              <span className="sold-out-span">SOLD OUT</span>
+            ) : (
+              `$ ${price.toFixed(2)}`
+            )}
+          </p>
+        ) : (
+          <div className="amount-cont">
+            <div className="amount-btns">
+              <button className="decrease-btn">-</button>
+              <span className="amount">1</span>
+              <button className="increase-btn">+</button>
+            </div>
+
+            <button className="delete-btn">Delete</button>
+          </div>
+        )}
       </div>
 
-      <button
-        className={`${soldOut ? "hidden" : "add-btn"}`}
-        onClick={() => dispatch(addToCart({ title: name, price: price }))}
-      >
-        Add to Cart
-      </button>
+      {!itemIsInCart ? (
+        <button
+          className={`${soldOut ? "hidden" : "add-btn"}`}
+          onClick={() =>
+            dispatch(addToCart({ title: name, price: price, id: id }))
+          }
+        >
+          Add to Cart
+        </button>
+      ) : (
+        <p className="pizza-price-second">$ {price.toFixed(2)}</p>
+      )}
     </li>
   );
 }
