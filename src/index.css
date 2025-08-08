@@ -309,7 +309,7 @@ button:focus {
   width: 60px;
   height: 60px;
   border: 10px solid #dddddd;
-  border-top-color: #08674b;
+  border-top-color: rgb(252, 189, 0);
 
   border-radius: 50%;
   animation: loading 0.75s ease infinite;

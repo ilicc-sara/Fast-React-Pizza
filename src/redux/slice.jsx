@@ -18,9 +18,15 @@ const nameSlice = createSlice({
         id: action.payload.id,
       });
     },
+    increaseAmount: (state, action) => {
+      //  const index = state.findIndex((toDo) => toDo.id === action.payload.id);
+      // state[index].completed = action.payload.completed;
+      const index = state.findIndex((item) => item.id === action.payload.id);
+      state[index].amount += amount;
+    },
   },
 });
 
-export const { setName, addToCart } = nameSlice.actions;
+export const { setName, addToCart, increaseAmount } = nameSlice.actions;
 
 export default nameSlice.reducer;
