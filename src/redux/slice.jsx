@@ -35,10 +35,18 @@ const nameSlice = createSlice({
         state.cart[index].amount -= 1;
       } else state.cart[index].amount = state.cart[index].amount;
     },
+    deleteCartItem: (state, action) => {
+      state.cart.filter((item) => item.id !== action.payload.id);
+    },
   },
 });
 
-export const { setName, addToCart, increaseAmount, decreaseAmount } =
-  nameSlice.actions;
+export const {
+  setName,
+  addToCart,
+  increaseAmount,
+  decreaseAmount,
+  deleteCartItem,
+} = nameSlice.actions;
 
 export default nameSlice.reducer;

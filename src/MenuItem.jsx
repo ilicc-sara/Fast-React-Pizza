@@ -1,5 +1,10 @@
 import React from "react";
-import { addToCart, increaseAmount, decreaseAmount } from "./redux/slice";
+import {
+  addToCart,
+  increaseAmount,
+  decreaseAmount,
+  deleteCartItem,
+} from "./redux/slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -51,7 +56,12 @@ function MenuItem(props) {
               </button>
             </div>
 
-            <button className="delete-btn">Delete</button>
+            <button
+              onClick={() => dispatch(deleteCartItem({ id: id }))}
+              className="delete-btn"
+            >
+              Delete
+            </button>
           </div>
         )}
       </div>
