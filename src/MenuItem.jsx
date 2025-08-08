@@ -1,5 +1,5 @@
 import React from "react";
-import { addToCart, increaseAmount } from "./redux/slice";
+import { addToCart, increaseAmount, decreaseAmount } from "./redux/slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -34,7 +34,12 @@ function MenuItem(props) {
         ) : (
           <div className="amount-cont">
             <div className="amount-btns">
-              <button className="decrease-btn">-</button>
+              <button
+                onClick={() => dispatch(decreaseAmount({ id: id }))}
+                className="decrease-btn"
+              >
+                -
+              </button>
               <span className="amount">
                 {info.cart.find((item) => item.id === id).amount}
               </span>

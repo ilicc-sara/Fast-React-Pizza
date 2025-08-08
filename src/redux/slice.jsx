@@ -26,9 +26,18 @@ const nameSlice = createSlice({
       );
       state.cart[index].amount += 1;
     },
+    decreaseAmount: (state, action) => {
+      const index = state.cart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (state.cart[index].amount !== 1) {
+        return (state.cart[index].amount -= 1);
+      } else return state.cart[index].amount;
+    },
   },
 });
 
-export const { setName, addToCart, increaseAmount } = nameSlice.actions;
+export const { setName, addToCart, increaseAmount, decreaseAmount } =
+  nameSlice.actions;
 
 export default nameSlice.reducer;
