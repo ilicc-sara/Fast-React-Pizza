@@ -36,7 +36,7 @@ const nameSlice = createSlice({
       } else state.cart[index].amount = state.cart[index].amount;
     },
     deleteCartItem: (state, action) => {
-      state.cart.filter((item) => item.id !== action.payload.id);
+      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
     },
   },
 });
