@@ -33,7 +33,8 @@ const nameSlice = createSlice({
       // state.cart[index].amount -= 1;
       if (state.cart[index].amount !== 1) {
         state.cart[index].amount -= 1;
-      } else state.cart[index].amount = state.cart[index].amount;
+      } else
+        state.cart = state.cart.filter((item) => item.id !== action.payload.id);
     },
     deleteCartItem: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload.id);
