@@ -35,7 +35,9 @@ function MenuItem(props) {
           <div className="amount-cont">
             <div className="amount-btns">
               <button className="decrease-btn">-</button>
-              <span className="amount">1</span>
+              <span className="amount">
+                {info.cart.find((item) => item.id === id).amount}
+              </span>
               <button
                 onClick={() => dispatch(increaseAmount({ id: id }))}
                 className="increase-btn"

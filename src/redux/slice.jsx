@@ -21,8 +21,10 @@ const nameSlice = createSlice({
     increaseAmount: (state, action) => {
       //  const index = state.findIndex((toDo) => toDo.id === action.payload.id);
       // state[index].completed = action.payload.completed;
-      const index = state.findIndex((item) => item.id === action.payload.id);
-      state[index].amount += amount;
+      const index = state.cart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.cart[index].amount += 1;
     },
   },
 });
