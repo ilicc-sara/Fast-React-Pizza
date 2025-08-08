@@ -30,9 +30,10 @@ const nameSlice = createSlice({
       const index = state.cart.findIndex(
         (item) => item.id === action.payload.id
       );
+      // state.cart[index].amount -= 1;
       if (state.cart[index].amount !== 1) {
-        return (state.cart[index].amount -= 1);
-      } else return state.cart[index].amount;
+        state.cart[index].amount -= 1;
+      } else state.cart[index].amount = state.cart[index].amount;
     },
   },
 });
