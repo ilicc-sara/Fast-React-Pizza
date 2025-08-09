@@ -6,7 +6,6 @@ function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
 
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {

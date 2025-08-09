@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   addToCart,
   increaseAmount,
@@ -12,7 +10,6 @@ import { useSelector } from "react-redux";
 function MenuItem(props) {
   const { soldOut, img, name, ingredients, price, id } = props;
   const dispatch = useDispatch();
-  // const info = useSelector((state) => state.name);
   const cart = useSelector((state) => state.cart);
 
   const itemIsInCart = cart.includes(cart.find((item) => item.id === id));
