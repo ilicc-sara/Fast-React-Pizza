@@ -5,8 +5,8 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Menu from "./Menu.jsx";
-import Home from "./Home.jsx";
+import Menu from "./pages/Menu.jsx";
+import Home from "./pages/Home.jsx";
 import SharedLayout from "./layouts/sharedLayout.jsx";
 
 const router = createBrowserRouter([

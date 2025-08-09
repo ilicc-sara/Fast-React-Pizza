@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MenuItem from "./MenuItem";
+import MenuItem from "../MenuItem";
 import { useSelector } from "react-redux";
 
 function Menu() {
