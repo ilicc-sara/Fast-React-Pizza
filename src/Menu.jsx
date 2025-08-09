@@ -14,7 +14,6 @@ function Menu() {
         setIsLoading(true);
         const response = await fetch(`${url}`);
         const posts = await response.json();
-        // console.log(posts.data);
         setMenuItems(posts.data);
         setIsLoading(false);
       } catch (error) {
@@ -24,8 +23,6 @@ function Menu() {
 
     fetchPost();
   }, []);
-
-  // console.log(menuItems);
 
   return (
     <section className="menu-section">
