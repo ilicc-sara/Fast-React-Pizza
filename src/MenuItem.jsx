@@ -1,21 +1,21 @@
 import React from "react";
+
 import {
   addToCart,
   increaseAmount,
   decreaseAmount,
   deleteCartItem,
-} from "./redux/slice";
+} from "./redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 function MenuItem(props) {
   const { soldOut, img, name, ingredients, price, id } = props;
   const dispatch = useDispatch();
-  const info = useSelector((state) => state.name);
+  // const info = useSelector((state) => state.name);
+  const cart = useSelector((state) => state.cart);
 
-  const itemIsInCart = info.cart.includes(
-    info.cart.find((item) => item.id === id)
-  );
+  const itemIsInCart = cart.includes(cart.find((item) => item.id === id));
 
   return (
     <li className="menu-item">
@@ -46,7 +46,7 @@ function MenuItem(props) {
                 -
               </button>
               <span className="amount">
-                {info.cart.find((item) => item.id === id).amount}
+                {cart.find((item) => item.id === id).amount}
               </span>
               <button
                 onClick={() => dispatch(increaseAmount({ id: id }))}

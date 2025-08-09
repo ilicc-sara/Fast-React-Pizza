@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const info = useSelector((state) => state.name);
-  console.log(info);
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
 
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {
@@ -45,7 +45,7 @@ function Menu() {
             />
           ))}
       </ul>
-      {info.cart.length !== 0 && <footer className="footer-cart"></footer>}
+      {cart.length !== 0 && <footer className="footer-cart"></footer>}
     </section>
   );
 }
