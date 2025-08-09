@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 function Nav() {
   const name = useSelector((state) => state.name);
 
+  const info2 = useSelector((state) => state.cart);
+  console.log(info2);
+
   return (
     <nav>
       <p>Fast react pizza co.</p>
