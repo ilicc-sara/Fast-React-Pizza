@@ -7,6 +7,7 @@ import { store } from "./redux/store.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Menu from "./pages/Menu.jsx";
 import Home from "./pages/Home.jsx";
+import Cart from "./pages/Cart.jsx";
 import SharedLayout from "./layouts/sharedLayout.jsx";
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

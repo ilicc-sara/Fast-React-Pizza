@@ -45,10 +45,23 @@ function Menu() {
       {cart.length !== 0 && (
         <footer className="footer-cart">
           <div className="cart-info">
-            <p>5</p>
-            <p>$55</p>
+            <p>
+              {cart.reduce((acc, cur) => {
+                return acc + cur.amount;
+              }, 0)}
+            </p>
+            <p>
+              $
+              {cart
+                .reduce((acc, cur) => {
+                  return acc + cur.price * cur.amount;
+                }, 0)
+                .toFixed(2)}
+            </p>
           </div>
-          <Link className="open-cart">Open Cart &rarr;</Link>
+          <Link to="/cart" className="open-cart">
+            Open Cart &rarr;
+          </Link>
         </footer>
       )}
     </section>
