@@ -202,6 +202,9 @@ button:focus {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.amount-cont.amount-menu {
   position: absolute;
   bottom: 0px;
 }

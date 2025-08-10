@@ -34,7 +34,7 @@ function MenuItem(props) {
             )}
           </p>
         ) : (
-          <div className="amount-cont">
+          <div className="amount-cont amount-menu">
             <div className="amount-btns">
               <button
                 onClick={() => dispatch(decreaseAmount({ id: id }))}
