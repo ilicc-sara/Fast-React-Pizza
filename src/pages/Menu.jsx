@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MenuItem from "../MenuItem";
 import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
@@ -41,7 +42,15 @@ function Menu() {
             />
           ))}
       </ul>
-      {cart.length !== 0 && <footer className="footer-cart"></footer>}
+      {cart.length !== 0 && (
+        <footer className="footer-cart">
+          <div className="cart-info">
+            <p>5</p>
+            <p>$55</p>
+          </div>
+          <Link className="open-cart">Open Cart &rarr;</Link>
+        </footer>
+      )}
     </section>
   );
 }
