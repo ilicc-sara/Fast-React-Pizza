@@ -312,6 +312,23 @@ button:focus {
   cursor: pointer;
 }
 
+.cart-section {
+  margin: 0 auto;
+  width: 770px;
+  text-align: left;
+  padding: 20px;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: #3b82f6;
+}
+
+.cart-heading {
+  font-size: 22px;
+  font-weight: 600;
+}
+
 .loader {
   position: fixed;
   top: 0;
