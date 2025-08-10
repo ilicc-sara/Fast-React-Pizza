@@ -19,42 +19,44 @@ function Cart() {
         &larr; Back to menu
       </Link>
 
-      <div>
+      <div className="cart-cont">
         <p className="cart-heading">Your cart, {name.name}</p>
         {cart.map((item) => (
-          <article>
+          <article className="cart-article">
             <p>
               {item.amount} &times; {item.title}
             </p>
 
-            <p>${(item.amount * item.price).toFixed(2)}</p>
+            <div className="amount-price">
+              <p>${(item.amount * item.price).toFixed(2)}</p>
 
-            <div className="amount-cont">
-              <div className="amount-btns">
+              <div className="amount-cont">
+                <div className="amount-btns">
+                  <button
+                    onClick={() => dispatch(decreaseAmount({ id: item.id }))}
+                    className="decrease-btn"
+                  >
+                    -
+                  </button>
+                  <span className="amount">
+                    {/* {cart.find((item) => item.id === id).amount} */}
+                    {item.amount}
+                  </span>
+                  <button
+                    onClick={() => dispatch(increaseAmount({ id: item.id }))}
+                    className="increase-btn"
+                  >
+                    +
+                  </button>
+                </div>
+
                 <button
-                  onClick={() => dispatch(decreaseAmount({ id: item.id }))}
-                  className="decrease-btn"
+                  onClick={() => dispatch(deleteCartItem({ id: item.id }))}
+                  className="delete-btn"
                 >
-                  -
-                </button>
-                <span className="amount">
-                  {/* {cart.find((item) => item.id === id).amount} */}
-                  {item.amount}
-                </span>
-                <button
-                  onClick={() => dispatch(increaseAmount({ id: item.id }))}
-                  className="increase-btn"
-                >
-                  +
+                  Delete
                 </button>
               </div>
-
-              <button
-                onClick={() => dispatch(deleteCartItem({ id: id }))}
-                className="delete-btn"
-              >
-                Delete
-              </button>
             </div>
           </article>
         ))}

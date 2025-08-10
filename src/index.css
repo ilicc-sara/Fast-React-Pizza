@@ -320,6 +320,7 @@ button:focus {
   width: 770px;
   text-align: left;
   padding: 20px;
+  overflow-y: scroll;
 }
 
 .menu-link {
@@ -330,6 +331,27 @@ button:focus {
 .cart-heading {
   font-size: 22px;
   font-weight: 600;
+}
+
+.cart-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 5px;
+  border-bottom: 0.5px solid rgb(211, 211, 211);
+}
+
+.amount-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
 }
 
 .loader {
