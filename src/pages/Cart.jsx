@@ -15,6 +15,11 @@ function Cart() {
         <p className="cart-heading">Your cart, {name.name}</p>
         <CartItem />
       </div>
+
+      <div className="cart-btns">
+        <button className="btn order-btn">Order pizzas</button>
+        <button className="clear-btn">Clear cart</button>
+      </div>
     </section>
   );
 }

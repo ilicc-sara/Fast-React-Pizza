@@ -38,7 +38,7 @@ function MenuItem(props) {
             <div className="amount-btns">
               <button
                 onClick={() => dispatch(decreaseAmount({ id: id }))}
-                className="decrease-btn"
+                className="btn decrease-btn"
               >
                 -
               </button>
@@ -47,7 +47,7 @@ function MenuItem(props) {
               </span>
               <button
                 onClick={() => dispatch(increaseAmount({ id: id }))}
-                className="increase-btn"
+                className="btn increase-btn"
               >
                 +
               </button>
@@ -55,7 +55,7 @@ function MenuItem(props) {
 
             <button
               onClick={() => dispatch(deleteCartItem({ id: id }))}
-              className="delete-btn"
+              className="btn delete-btn"
             >
               Delete
             </button>
@@ -65,7 +65,7 @@ function MenuItem(props) {
 
       {!itemIsInCart ? (
         <button
-          className={`${soldOut ? "hidden" : "add-btn"}`}
+          className={`btn ${soldOut ? "hidden" : "add-btn"}`}
           onClick={() =>
             dispatch(addToCart({ title: name, price: price, id: id }))
           }

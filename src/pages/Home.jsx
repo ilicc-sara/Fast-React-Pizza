@@ -39,7 +39,9 @@ function Home() {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-          <button className={`${value.length === 0 ? "hidden" : "start-btn"}`}>
+          <button
+            className={`btn ${value.length === 0 ? "hidden" : "start-btn"}`}
+          >
             Start Ordering
           </button>
         </form>
@@ -47,7 +49,7 @@ function Home() {
 
       {name.name !== "" && (
         <Link to="/menu">
-          <button className={`start-btn`}>
+          <button className="btn start-btn">
             Continue Ordering, {name.name}
           </button>
         </Link>

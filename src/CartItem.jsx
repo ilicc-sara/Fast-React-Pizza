@@ -22,14 +22,14 @@ function CartItem() {
           <div className="amount-btns">
             <button
               onClick={() => dispatch(decreaseAmount({ id: item.id }))}
-              className="decrease-btn"
+              className="btn decrease-btn"
             >
               -
             </button>
             <span className="amount">{item.amount}</span>
             <button
               onClick={() => dispatch(increaseAmount({ id: item.id }))}
-              className="increase-btn"
+              className="btn increase-btn"
             >
               +
             </button>
@@ -37,7 +37,7 @@ function CartItem() {
 
           <button
             onClick={() => dispatch(deleteCartItem({ id: item.id }))}
-            className="delete-btn"
+            className="btn delete-btn"
           >
             Delete
           </button>
