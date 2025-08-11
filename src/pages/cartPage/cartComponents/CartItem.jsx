@@ -2,7 +2,7 @@ import {
   increaseAmount,
   decreaseAmount,
   deleteCartItem,
-} from "./redux/cartSlice";
+} from "../../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 

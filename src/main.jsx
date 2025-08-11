@@ -5,9 +5,9 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Menu from "./pages/Menu.jsx";
+import Menu from "./pages/menuPage/Menu.jsx";
 import Home from "./pages/Home.jsx";
-import Cart from "./pages/Cart.jsx";
+import Cart from "./pages/cartPage/Cart.jsx";
 import NewOrder from "./pages/NewOrder.jsx";
 import SharedLayout from "./layouts/sharedLayout.jsx";
 
