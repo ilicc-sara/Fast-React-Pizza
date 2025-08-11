@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 function CartItem() {
   const cart = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
   return cart.map((item) => (
     <article className="cart-article">

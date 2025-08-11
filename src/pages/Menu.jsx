@@ -52,11 +52,11 @@ function Menu() {
             </p>
             <p>
               $
-              {cart
+              {/* {cart
                 .reduce((acc, cur) => {
                   return acc + cur.price * cur.amount;
                 }, 0)
-                .toFixed(2)}
+                .toFixed(2)} */}
             </p>
           </div>
           <Link to="/cart" className="open-cart">
