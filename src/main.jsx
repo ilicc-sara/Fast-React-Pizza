@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Menu from "./pages/Menu.jsx";
 import Home from "./pages/Home.jsx";
 import Cart from "./pages/Cart.jsx";
+import NewOrder from "./pages/NewOrder.jsx";
 import SharedLayout from "./layouts/sharedLayout.jsx";
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/order/new",
+        element: <NewOrder />,
       },
     ],
   },

@@ -1,9 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CartItem from "../CartItem";
+import { clearCart } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
 function Cart() {
   const name = useSelector((state) => state.name);
+  const dispatch = useDispatch();
 
   return (
     <section className="cart-section">
@@ -17,8 +20,12 @@ function Cart() {
       </div>
 
       <div className="cart-btns">
-        <button className="btn order-btn">Order pizzas</button>
-        <button className="clear-btn">Clear cart</button>
+        <Link to="/order/new">
+          <button className="btn order-btn">Order pizzas</button>
+        </Link>
+        <button className="clear-btn" onClick={() => dispatch(clearCart())}>
+          Clear cart
+        </button>
       </div>
     </section>
   );
