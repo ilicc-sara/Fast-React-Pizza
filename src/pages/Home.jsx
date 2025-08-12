@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setName } from "@/redux/slice";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+// import { selectCart } from "../redux/cartSlice";
 
 function Home() {
   const [value, setValue] = useState("");
@@ -10,7 +11,8 @@ function Home() {
   const navigate = useNavigate();
   const name = useSelector((state) => state.name);
 
-  console.log(name);
+  // console.log(name);
+  const cart = useSelector((state) => state.cart);
 
   function submitForm(e) {
     e.preventDefault();
