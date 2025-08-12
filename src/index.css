@@ -320,11 +320,13 @@ nav p {
 }
 
 .cart-section {
+  position: relative;
   margin: 0 auto;
   width: 770px;
   text-align: left;
   padding: 20px;
   overflow-y: scroll;
+  margin-bottom: 70px;
 }
 
 .menu-link {

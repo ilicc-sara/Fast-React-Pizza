@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import CartItem from "./cartComponents/CartItem";
 import { clearCart } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
+import FooterCart from "../../components/FooterCart";
 
 function Cart() {
   const name = useSelector((state) => state.name);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   return (
@@ -27,6 +29,18 @@ function Cart() {
           Clear cart
         </button>
       </div>
+      {cart.length !== 0 && (
+        // <footer className="footer-cart">
+        //   <div className="cart-info">
+        //     <p>{sumAmount}</p>
+        //     <p>${sumPrice}</p>
+        //   </div>
+        //   <Link to="/cart" className="open-cart">
+        //     Open Cart &rarr;
+        //   </Link>
+        // </footer>
+        <FooterCart />
+      )}
     </section>
   );
 }
