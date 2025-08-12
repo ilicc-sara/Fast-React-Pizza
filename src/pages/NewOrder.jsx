@@ -26,10 +26,10 @@ function NewOrder() {
 
       <div className="priority-order">
         <input type="checkbox" />
-        <p>Want to yo give your order priority?</p>
+        <p>Want to give your order priority?</p>
       </div>
 
-      <button className="order-btn btn">Order now for {sumPrice}</button>
+      <button className="order-btn btn">Order now for ${sumPrice}</button>
     </section>
   );
 }

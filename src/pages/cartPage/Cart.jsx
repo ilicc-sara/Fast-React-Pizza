@@ -29,18 +29,7 @@ function Cart() {
           Clear cart
         </button>
       </div>
-      {cart.length !== 0 && (
-        // <footer className="footer-cart">
-        //   <div className="cart-info">
-        //     <p>{sumAmount}</p>
-        //     <p>${sumPrice}</p>
-        //   </div>
-        //   <Link to="/cart" className="open-cart">
-        //     Open Cart &rarr;
-        //   </Link>
-        // </footer>
-        <FooterCart />
-      )}
+      {cart.length !== 0 && <FooterCart />}
     </section>
   );
 }
