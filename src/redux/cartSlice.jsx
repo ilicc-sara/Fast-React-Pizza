@@ -11,6 +11,12 @@ export const priceSum = createSelector([(state) => state.cart], (cart) => {
     .toFixed(2);
 });
 
+export const amountSum = createSelector([(state) => state.cart], (cart) => {
+  return cart.reduce((acc, cur) => {
+    return acc + cur.amount;
+  }, 0);
+});
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState,
