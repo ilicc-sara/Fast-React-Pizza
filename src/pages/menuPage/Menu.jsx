@@ -2,19 +2,14 @@ import { useState, useEffect } from "react";
 import MenuItem from "./menuComponents/MenuItem";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
 import { priceSum } from "../../redux/cartSlice";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const cart = useSelector((state) => state.cart);
-  // console.log(sumPrice());
-  // const priceSum = useSelector(sumPrice);
-  // console.log(sumPrice);
+
   const sumPrice = useSelector((state) => priceSum(state));
-  console.log("price", sumPrice);
-  console.log(cart);
 
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {
@@ -58,14 +53,7 @@ function Menu() {
                 return acc + cur.amount;
               }, 0)}
             </p>
-            <p>
-              $
-              {cart
-                .reduce((acc, cur) => {
-                  return acc + cur.price * cur.amount;
-                }, 0)
-                .toFixed(2)}
-            </p>
+            <p>${sumPrice}</p>
           </div>
           <Link to="/cart" className="open-cart">
             Open Cart &rarr;

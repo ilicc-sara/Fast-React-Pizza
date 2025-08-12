@@ -1,21 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
-import { useSelector } from "react-redux";
 
 const initialState = [];
-
-// const selectFirstTitle = (state) => state[0].title;
-// const selectSecondTitle = (state) => state[1].title;
-// const selectThirdTitle = (state) => state[2].title;
-
-// const firstThreeTitles = createSelector(
-//   [selectFirstTitle, selectSecondTitle, selectThirdTitle],
-//   (a, b, c) => {
-//     return `${a}, ${b} and ${c}`;
-//   }
-// );
-
-// export const selectCart = (state) => state.cart;
 
 export const priceSum = createSelector([(state) => state.cart], (cart) => {
   return cart
@@ -24,28 +10,6 @@ export const priceSum = createSelector([(state) => state.cart], (cart) => {
     }, 0)
     .toFixed(2);
 });
-
-// export const cartLength = createSelector([(state) => state.cart], (cart) => {
-//   return cart.length;
-// });
-
-// console.log(cartLength);
-
-// export const sumPrice = createSelector([cart], (cart) => {
-//   return cart
-//     .reduce((acc, cur) => {
-//       return acc + cur.price * cur.amount;
-//     }, 0)
-//     .toFixed(2);
-// });
-
-// export const calculatePrice = (state) => {
-//   return state
-//     .reduce((acc, cur) => {
-//       return acc + cur.price * cur.amount;
-//     }, 0)
-//     .toFixed(2);
-// };
 
 const cartSlice = createSlice({
   name: "cartSlice",
