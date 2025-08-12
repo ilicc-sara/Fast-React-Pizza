@@ -1,30 +1,35 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { priceSum } from "../redux/cartSlice";
 
 function NewOrder() {
+  const name = useSelector((state) => state.name);
+  const sumPrice = useSelector((state) => priceSum(state));
   return (
     <section className="new-order-section">
       <p className="cart-heading">Ready to order? Let's go!</p>
-      <form
-        style={{
-          width: "700px",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <label>
-          First Name
-          <input type="text" />
-        </label>
-        <label>
-          Phone Number
-          <input type="tel" />
-        </label>
-        <label>
-          Address
-          <input type="address" />
-        </label>
+      <form className="order-form">
+        <div className="input-cont">
+          <label>First Name</label>
+          <input type="text" value={name.name} required />
+        </div>
+        <div className="input-cont">
+          <label>Phone Number</label>
+          <input type="tel" required />
+        </div>
+        <div className="input-cont">
+          <label>Address</label>
+          <input type="address" required />
+        </div>
+        <button className="hidden"></button>
       </form>
+
+      <div className="priority-order">
+        <input type="checkbox" />
+        <p>Want to yo give your order priority?</p>
+      </div>
+
+      <button className="order-btn btn">Order now for {sumPrice}</button>
     </section>
   );
 }

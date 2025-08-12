@@ -430,6 +430,53 @@ nav p {
   animation: loading 0.75s ease infinite;
 }
 
+.new-order-section {
+  position: relative;
+  margin: 0 auto;
+  width: 770px;
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 70px;
+}
+
+.order-form {
+  width: 700px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.input-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-cont input {
+  font-size: 20px;
+  padding: 12px;
+  padding-left: 20px;
+  border-radius: 222px;
+  width: 550px;
+  border: 0.5px solid rgba(128, 128, 128, 0.485);
+  background: none;
+}
+
+.input-cont input:focus {
+  border: 0.5px solid rgba(176, 176, 176, 0);
+  box-shadow: inset 0 0 0 3px rgb(255, 200, 0);
+  outline: none;
+}
+
+.priority-order {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  width: 700px;
+  margin: 25px auto;
+}
+
 @keyframes loading {
   from {
     transform: rotate(0turn);
