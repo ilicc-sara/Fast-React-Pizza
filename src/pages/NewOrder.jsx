@@ -21,15 +21,14 @@ function NewOrder() {
           <label>Address</label>
           <input type="address" required />
         </div>
-        <button className="hidden"></button>
+
+        <div className="priority-order">
+          <input className="input-checkbox" type="checkbox" />
+          <p>Want to give your order priority?</p>
+        </div>
+
+        <button className="order-btn btn">Order now for ${sumPrice}</button>
       </form>
-
-      <div className="priority-order">
-        <input type="checkbox" />
-        <p>Want to give your order priority?</p>
-      </div>
-
-      <button className="order-btn btn">Order now for ${sumPrice}</button>
     </section>
   );
 }
