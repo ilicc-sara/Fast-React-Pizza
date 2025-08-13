@@ -34,7 +34,9 @@ function NewOrder() {
           <p>Want to give your order priority?</p>
         </div>
 
-        <button className="order-btn btn">Order now for ${sumPrice}</button>
+        <button type="submit" className="order-btn btn">
+          Order now for ${sumPrice}
+        </button>
       </form>
     </section>
   );
