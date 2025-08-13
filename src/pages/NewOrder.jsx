@@ -1,14 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 function NewOrder() {
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
+
+  function submitForm(e) {
+    e.preventDefault();
+    useNavigate("/order/777");
+  }
   return (
     <section className="new-order-section">
       <p className="cart-heading">Ready to order? Let's go!</p>
-      <form className="order-form">
+      <form onSubmit={submitForm} className="order-form">
         <div className="input-cont">
           <label>First Name</label>
           <input type="text" value={name.name} required />

@@ -14,7 +14,6 @@ function Home() {
   const name = useSelector((state) => state.name);
 
   const loading = useSelector((state) => state.loading);
-  console.log(loading);
 
   function submitForm(e) {
     e.preventDefault();
@@ -30,9 +29,6 @@ function Home() {
       <h1 className="home-intro-description">
         Straight out of the oven, straight to you.
       </h1>
-      {/* <button onClick={() => dispatch(toggleLoading({ isLoading: true }))}>
-        toggle loading
-      </button> */}
 
       {name.name === "" && (
         <p className="welcome-text">
