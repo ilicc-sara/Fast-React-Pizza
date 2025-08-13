@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 import MenuItem from "./menuComponents/MenuItem";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toggleLoading } from "../../redux/loadingSlice";
 import FooterCart from "../../components/FooterCart";
 
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+
   const cart = useSelector((state) => state.cart);
+  const loading = useSelector((state) => state.loading);
+  console.log(loading);
+  const dispatch = useDispatch();
 
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        setIsLoading(true);
+        dispatch(toggleLoading({ isLoading: true }));
         const response = await fetch(`${url}`);
         const posts = await response.json();
         setMenuItems(posts.data);
-        setIsLoading(false);
+
+        dispatch(toggleLoading({ isLoading: false }));
       } catch (error) {
         console.log(error);
       }
@@ -27,7 +33,7 @@ function Menu() {
 
   return (
     <section className="menu-section">
-      {isLoading && <div className="loader"></div>}
+      {loading.isLoading && <div className="loader"></div>}
       <ul className="menu-items">
         {menuItems.length !== 0 &&
           menuItems.map((item, index) => (
@@ -42,18 +48,7 @@ function Menu() {
             />
           ))}
       </ul>
-      {cart.length !== 0 && (
-        // <footer className="footer-cart">
-        //   <div className="cart-info">
-        //     <p>{sumAmount}</p>
-        //     <p>${sumPrice}</p>
-        //   </div>
-        //   <Link to="/cart" className="open-cart">
-        //     Open Cart &rarr;
-        //   </Link>
-        // </footer>
-        <FooterCart />
-      )}
+      {cart.length !== 0 && <FooterCart />}
     </section>
   );
 }

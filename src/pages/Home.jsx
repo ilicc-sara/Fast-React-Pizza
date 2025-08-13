@@ -12,25 +12,27 @@ function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const name = useSelector((state) => state.name);
-  //
+
   const loading = useSelector((state) => state.loading);
   console.log(loading);
-  //
+
   function submitForm(e) {
     e.preventDefault();
+    dispatch(toggleLoading({ isLoading: true }));
     dispatch(setName({ name: value }));
     navigate("/menu");
     setValue("");
   }
   return (
     <section className="home-section">
+      {loading.isLoading && <div className="loader"></div>}
       <p className="home-intro-heading">The best pizza.</p>
       <h1 className="home-intro-description">
         Straight out of the oven, straight to you.
       </h1>
-      <button onClick={() => dispatch(toggleLoading({ isLoading: true }))}>
+      {/* <button onClick={() => dispatch(toggleLoading({ isLoading: true }))}>
         toggle loading
-      </button>
+      </button> */}
 
       {name.name === "" && (
         <p className="welcome-text">
