@@ -3,13 +3,19 @@ import { useDispatch } from "react-redux";
 import { setName } from "@/redux/slice";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+//
+import { toggleLoading } from "../redux/loadingSlice";
+//
 
 function Home() {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const name = useSelector((state) => state.name);
-
+  //
+  const loading = useSelector((state) => state.loading);
+  console.log(loading);
+  //
   function submitForm(e) {
     e.preventDefault();
     dispatch(setName({ name: value }));
@@ -22,6 +28,9 @@ function Home() {
       <h1 className="home-intro-description">
         Straight out of the oven, straight to you.
       </h1>
+      <button onClick={() => dispatch(toggleLoading({ isLoading: true }))}>
+        toggle loading
+      </button>
 
       {name.name === "" && (
         <p className="welcome-text">
