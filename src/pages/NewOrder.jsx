@@ -6,10 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 function NewOrder() {
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
+  const navigate = useNavigate();
 
   function submitForm(e) {
     e.preventDefault();
-    useNavigate("/order/777");
+    navigate("/order/1111");
   }
   return (
     <section className="new-order-section">
