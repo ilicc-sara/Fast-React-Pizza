@@ -10,8 +10,8 @@ function CartItem() {
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
-  return cart.map((item) => (
-    <article className="cart-article">
+  return cart.map((item, index) => (
+    <article key={index} className="cart-article">
       <p>
         {item.amount} &times; {item.title}
       </p>

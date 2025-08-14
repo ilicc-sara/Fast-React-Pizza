@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,10 @@ function NewOrder() {
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
   const navigate = useNavigate();
+
+  const [nameValue, setNameValue] = useState(name.name);
+  const [telValue, setTelValue] = useState("");
+  const [addressValue, setAddressValue] = useState("");
 
   function submitForm(e) {
     e.preventDefault();
@@ -18,15 +22,30 @@ function NewOrder() {
       <form onSubmit={submitForm} className="order-form">
         <div className="input-cont">
           <label>First Name</label>
-          <input type="text" value={name.name} required />
+          <input
+            type="text"
+            value={nameValue}
+            onChange={(e) => setNameValue(e.targetValue)}
+            required
+          />
         </div>
         <div className="input-cont">
           <label>Phone Number</label>
-          <input type="tel" required />
+          <input
+            type="tel"
+            value={telValue}
+            onChange={(e) => setTelValue(e.target.value)}
+            required
+          />
         </div>
         <div className="input-cont">
           <label>Address</label>
-          <input type="address" required />
+          <input
+            type="text"
+            value={addressValue}
+            onChange={(e) => setAddressValue(e.target.value)}
+            required
+          />
         </div>
 
         <div className="priority-order">
