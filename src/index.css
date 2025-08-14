@@ -501,6 +501,16 @@ nav p {
   justify-content: space-between;
 }
 
+.final-order-list {
+  list-style: none;
+}
+
+.final-order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .final-price-cont {
   background-color: rgb(231 229 228);
   display: flex;

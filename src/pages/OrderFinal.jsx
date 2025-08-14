@@ -24,11 +24,11 @@ function OrderFinal() {
         <p>Only 40 minutes left 😃</p>
         <p>(Estimated delivery: Aug 13, 07:57 PM)</p>
       </div>
-      <ul>
+      <ul className="final-order-list">
         {cart.map((item, index) => (
-          <li>
+          <li key={index} className="final-order-item">
             {item.amount} &times; {item.title}
-            <span>{item.price * item.amount}</span>
+            <span>${(item.price * item.amount).toFixed(2)}</span>
           </li>
         ))}
       </ul>
