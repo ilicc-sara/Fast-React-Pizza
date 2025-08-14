@@ -16,19 +16,29 @@ function Cart() {
         &larr; Back to menu
       </Link>
 
-      <div className="cart-cont">
-        <p className="cart-heading">Your cart, {name.name}</p>
-        <CartItem />
-      </div>
+      {cart.length === 0 && (
+        <p className="cart-heading">
+          Your cart is still empty. Start adding some pizzas :)
+        </p>
+      )}
 
-      <div className="cart-btns">
-        <Link to="/order/new">
-          <button className="btn order-btn">Order pizzas</button>
-        </Link>
-        <button className="clear-btn" onClick={() => dispatch(clearCart())}>
-          Clear cart
-        </button>
-      </div>
+      {cart.length !== 0 && (
+        <>
+          <div className="cart-cont">
+            <p className="cart-heading">Your cart, {name.name}</p>
+            <CartItem />
+          </div>
+
+          <div className="cart-btns">
+            <Link to="/order/new">
+              <button className="btn order-btn">Order pizzas</button>
+            </Link>
+            <button className="clear-btn" onClick={() => dispatch(clearCart())}>
+              Clear cart
+            </button>
+          </div>
+        </>
+      )}
       {cart.length !== 0 && <FooterCart />}
     </section>
   );
