@@ -468,6 +468,34 @@ nav p {
   outline: none;
 }
 
+.section-final {
+  position: relative;
+  margin: 0 auto;
+  width: 770px;
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 70px;
+}
+
+.order-num-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delivery-time-cont {
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.final-price-cont {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+}
+
 .loader {
   position: fixed;
   top: 0;

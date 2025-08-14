@@ -13,15 +13,17 @@ function OrderFinal() {
   console.log(generateCode());
   return (
     <section className="section-final">
-      <p className="cart-heading">Order #{generateCode()} status</p>{" "}
-      <div className="delivery-time-cont">
+      <div className="order-num-cont">
+        <p className="cart-heading">Order #{generateCode()} status</p>{" "}
         <p>Preparing order</p>
+      </div>
+      <div className="delivery-time-cont">
         <p>
           Only 40 minutes left 😃 <p>(Estimated delivery: Aug 13, 07:57 PM)</p>
         </p>
       </div>
       <ul></ul>
-      <div>
+      <div className="final-price-cont">
         <p>Price pizza: $59.00</p>
         <p>To pay on delivery: $59.00</p>
       </div>
