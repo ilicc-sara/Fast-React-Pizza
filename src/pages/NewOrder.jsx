@@ -4,13 +4,12 @@ import { priceSum } from "../redux/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 function NewOrder() {
-  const [nameValue, setNameValue] = useState(name.name);
-  const [telValue, setTelValue] = useState("");
-  const [addressValue, setAddressValue] = useState("");
-
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
   const navigate = useNavigate();
+  const [nameValue, setNameValue] = useState(name.name);
+  const [telValue, setTelValue] = useState("");
+  const [addressValue, setAddressValue] = useState("");
 
   function generateCode(length = 6) {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -25,31 +24,30 @@ function NewOrder() {
     username: nameValue,
     number: telValue,
     address: addressValue,
+    orderCode: generateCode(),
   };
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await fetch(
-          `https://react-fast-pizza-api.onrender.com/api/order/${generateCode()}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newUser),
-          }
-        );
-        const posts = await response.json();
-        console.log(posts);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchPost();
-  }, []);
+  const fetchPost = async () => {
+    try {
+      const response = await fetch(
+        `https://react-fast-pizza-api.onrender.com/api/order/${newUser.orderCode}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newUser),
+        }
+      );
+      const posts = await response.json();
+      console.log(posts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function submitForm(e) {
     e.preventDefault();
-    navigate("/order/1111");
+    // navigate("/order/1111");
+    fetchPost();
   }
   return (
     <section className="new-order-section">
