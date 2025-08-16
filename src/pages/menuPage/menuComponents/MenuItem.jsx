@@ -24,7 +24,7 @@ function MenuItem(props) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  const itemIsInCart = cart.includes(cart.find((item) => item.id === id));
+  const itemIsInCart = cart.includes(cart.find((item) => item.pizzaId === id));
 
   return (
     <li className="menu-item">
@@ -55,7 +55,7 @@ function MenuItem(props) {
                 -
               </button>
               <span className="amount">
-                {cart.find((item) => item.id === id).amount}
+                {cart.find((item) => item.pizzaId === id).quantity}
               </span>
               <button
                 onClick={() => dispatch(increaseAmount({ id: id }))}

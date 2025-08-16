@@ -13,23 +13,23 @@ function CartItem() {
   return cart.map((item, index) => (
     <article key={index} className="cart-article">
       <p>
-        {item.amount} &times; {item.title}
+        {item.quantity} &times; {item.name}
       </p>
 
       <div className="amount-price">
-        <p>${(item.amount * item.price).toFixed(2)}</p>
+        <p>${item.totalPrice.toFixed(2)}</p>
 
         <div className="amount-cont">
           <div className="amount-btns">
             <button
-              onClick={() => dispatch(decreaseAmount({ id: item.id }))}
+              onClick={() => dispatch(decreaseAmount({ id: item.pizzaId }))}
               className="btn decrease-btn"
             >
               -
             </button>
-            <span className="amount">{item.amount}</span>
+            <span className="amount">{item.quantity}</span>
             <button
-              onClick={() => dispatch(increaseAmount({ id: item.id }))}
+              onClick={() => dispatch(increaseAmount({ id: item.pizzaId }))}
               className="btn increase-btn"
             >
               +
@@ -37,7 +37,7 @@ function CartItem() {
           </div>
 
           <button
-            onClick={() => dispatch(deleteCartItem({ id: item.id }))}
+            onClick={() => dispatch(deleteCartItem({ id: item.pizzaId }))}
             className="btn delete-btn"
           >
             Delete

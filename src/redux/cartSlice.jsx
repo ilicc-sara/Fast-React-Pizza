@@ -43,7 +43,7 @@ const cartSlice = createSlice({
         (item) => item.pizzaId === action.payload.id
       );
       state[index].quantity += 1;
-      state.totalPrice = state.quantity * state.unitPrice;
+      state[index].totalPrice = state[index].quantity * state[index].unitPrice;
     },
     decreaseAmount: (state, action) => {
       const index = state.findIndex(
@@ -51,7 +51,8 @@ const cartSlice = createSlice({
       );
       if (state[index].quantity !== 1) {
         state[index].quantity -= 1;
-        state.totalPrice = state.quantity * state.unitPrice;
+        state[index].totalPrice =
+          state[index].quantity * state[index].unitPrice;
       } else
         return (state = state.filter(
           (item) => item.pizzaId !== action.payload.id
