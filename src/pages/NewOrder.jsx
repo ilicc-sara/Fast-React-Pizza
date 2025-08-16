@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NewOrder() {
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
   const cart = useSelector((state) => state.cart);
+
   const navigate = useNavigate();
   const [nameValue, setNameValue] = useState(name.name);
   const [telValue, setTelValue] = useState("");
@@ -21,27 +22,19 @@ function NewOrder() {
     return result;
   }
 
-  // const newOrder = {
-  //   status: "success",
-  //   data: {
-  //     cart: cart,
-  //     customer: nameValue,
-  //     estimatedDelivery: "2025-08-16T14:35:14.918Z",
-  //     id: generateCode(),
-  //     orderPrice: 72,
-  //     priority: false,
-  //     priorityPrice: 0,
-  //     status: "preparing",
-  //   },
-  // };
-
   const newOrder = {
     address: addressValue,
     cart: cart,
+    createdAt: "2025-08-16T21:05:25.813Z",
     customer: nameValue,
+    estimatedDelivery: "2025-08-16T22:12:25.813Z",
+    id: generateCode(),
+    orderPrice: sumPrice,
     phone: telValue,
     position: "",
     priority: false,
+    priorityPrice: sumPrice + sumPrice / 20,
+    status: "preparing",
   };
 
   const fetchPost = async () => {
