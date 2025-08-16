@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,24 @@ function NewOrder() {
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
   const navigate = useNavigate();
+
+  // https://react-fast-pizza-api.onrender.com/api/order
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(
+          `https://react-fast-pizza-api.onrender.com/api/order/5DXYNA`
+        );
+        const posts = await response.json();
+        console.log(posts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPost();
+  }, []);
 
   const [nameValue, setNameValue] = useState(name.name);
   const [telValue, setTelValue] = useState("");
