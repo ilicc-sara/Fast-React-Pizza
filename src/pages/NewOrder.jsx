@@ -22,15 +22,26 @@ function NewOrder() {
   }
 
   // const newOrder = {
-  //   name: nameValue,
-  //   number: telValue,
-  //   address: addressValue,
-  //   orderCode: generateCode(),
+  //   status: "success",
+  //   data: {
+  //     cart: cart,
+  //     customer: nameValue,
+  //     estimatedDelivery: "2025-08-16T14:35:14.918Z",
+  //     id: generateCode(),
+  //     orderPrice: 72,
+  //     priority: false,
+  //     priorityPrice: 0,
+  //     status: "preparing",
+  //   },
   // };
 
   const newOrder = {
-    status: "success",
-    data: { customer: "sara", status: "preparing", priority: false },
+    address: addressValue,
+    cart: cart,
+    customer: nameValue,
+    phone: telValue,
+    position: "",
+    priority: false,
   };
 
   const fetchPost = async () => {

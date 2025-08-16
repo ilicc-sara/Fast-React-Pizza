@@ -25,9 +25,8 @@ const cartSlice = createSlice({
       state.push({
         title: action.payload.title,
         amount: 1,
-        unitPrice: action.payload.price,
+        price: action.payload.price,
         id: action.payload.id,
-        priority: false,
       });
     },
     increaseAmount: (state, action) => {
@@ -59,3 +58,11 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+const object = {
+  name: "Vegetale",
+  pizzaId: 6,
+  quantity: 2,
+  totalPrice: 26,
+  unitPrice: 13,
+};
