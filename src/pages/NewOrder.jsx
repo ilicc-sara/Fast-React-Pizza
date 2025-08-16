@@ -60,7 +60,7 @@ function NewOrder() {
 
   function submitForm(e) {
     e.preventDefault();
-    // navigate("/order/1111");
+    navigate(`/order/${newOrder.id}`);
     fetchPost();
   }
   return (

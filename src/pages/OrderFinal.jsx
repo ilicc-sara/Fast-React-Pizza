@@ -4,6 +4,21 @@ import { useSelector } from "react-redux";
 function OrderFinal() {
   const cart = useSelector((state) => state.cart);
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(
+          `https://react-fast-pizza-api.onrender.com/api/order/YKJJHI`
+        );
+        const data = await response.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPost();
+  }, []);
+
   return (
     <section className="section-final">
       <div className="order-num-cont">
