@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 import { createSelector } from "reselect";
 
 const initialState = [];
@@ -6,16 +7,23 @@ const initialState = [];
 export const priceSum = createSelector([(state) => state.cart], (cart) => {
   return cart
     .reduce((acc, cur) => {
-      return acc + cur.price * cur.amount;
+      return acc + cur.unitPrice * cur.quantity;
     }, 0)
     .toFixed(2);
 });
 
 export const amountSum = createSelector([(state) => state.cart], (cart) => {
   return cart.reduce((acc, cur) => {
-    return acc + cur.amount;
+    return acc + cur.quantity;
   }, 0);
 });
+
+// {
+//         title: action.payload.title,
+//         amount: 1,
+//         price: action.payload.price,
+//         id: action.payload.id,
+//       }
 
 const cartSlice = createSlice({
   name: "cartSlice",
@@ -23,25 +31,36 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.push({
-        title: action.payload.title,
-        amount: 1,
-        price: action.payload.price,
-        id: action.payload.id,
+        name: action.payload.title,
+        pizzaId: action.payload.id,
+        quantity: 1,
+        unitPrice: action.payload.price,
+        totalPrice: action.payload.price,
       });
     },
     increaseAmount: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload.id);
-      state[index].amount += 1;
+      const index = state.findIndex(
+        (item) => item.pizzaId === action.payload.id
+      );
+      state[index].quantity += 1;
+      state.totalPrice = state.quantity * state.unitPrice;
     },
     decreaseAmount: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload.id);
-      if (state[index].amount !== 1) {
-        state[index].amount -= 1;
+      const index = state.findIndex(
+        (item) => item.pizzaId === action.payload.id
+      );
+      if (state[index].quantity !== 1) {
+        state[index].quantity -= 1;
+        state.totalPrice = state.quantity * state.unitPrice;
       } else
-        return (state = state.filter((item) => item.id !== action.payload.id));
+        return (state = state.filter(
+          (item) => item.pizzaId !== action.payload.id
+        ));
     },
     deleteCartItem: (state, action) => {
-      return (state = state.filter((item) => item.id !== action.payload.id));
+      return (state = state.filter(
+        (item) => item.pizzaId !== action.payload.id
+      ));
     },
     clearCart: (state) => {
       return (state = []);
@@ -58,11 +77,3 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
-
-const object = {
-  name: "Vegetale",
-  pizzaId: 6,
-  quantity: 2,
-  totalPrice: 26,
-  unitPrice: 13,
-};
