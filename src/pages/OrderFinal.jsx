@@ -4,20 +4,10 @@ import { useSelector } from "react-redux";
 function OrderFinal() {
   const cart = useSelector((state) => state.cart);
 
-  function generateCode(length = 6) {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let result = "";
-    for (let i = 0; i < length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-  }
-
-  console.log(generateCode());
   return (
     <section className="section-final">
       <div className="order-num-cont">
-        <p className="cart-heading">Order #{generateCode()} status</p>{" "}
+        <p className="cart-heading">Order #J454MM4L4C164 status</p>{" "}
         <div className="preparing-order">Preparing order</div>
       </div>
       <div className="delivery-time-cont">

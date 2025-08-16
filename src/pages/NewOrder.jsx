@@ -4,17 +4,39 @@ import { priceSum } from "../redux/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 function NewOrder() {
+  const [nameValue, setNameValue] = useState(name.name);
+  const [telValue, setTelValue] = useState("");
+  const [addressValue, setAddressValue] = useState("");
+
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
   const navigate = useNavigate();
 
-  // https://react-fast-pizza-api.onrender.com/api/order
+  function generateCode(length = 6) {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+
+  const newUser = {
+    username: nameValue,
+    number: telValue,
+    address: addressValue,
+  };
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `https://react-fast-pizza-api.onrender.com/api/order/5DXYNA`
+          `https://react-fast-pizza-api.onrender.com/api/order/${generateCode()}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newUser),
+          }
         );
         const posts = await response.json();
         console.log(posts);
@@ -22,13 +44,8 @@ function NewOrder() {
         console.log(error);
       }
     };
-
     fetchPost();
   }, []);
-
-  const [nameValue, setNameValue] = useState(name.name);
-  const [telValue, setTelValue] = useState("");
-  const [addressValue, setAddressValue] = useState("");
 
   function submitForm(e) {
     e.preventDefault();
