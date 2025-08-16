@@ -25,8 +25,9 @@ const cartSlice = createSlice({
       state.push({
         title: action.payload.title,
         amount: 1,
-        price: action.payload.price,
+        unitPrice: action.payload.price,
         id: action.payload.id,
+        priority: false,
       });
     },
     increaseAmount: (state, action) => {

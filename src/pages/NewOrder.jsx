@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 function NewOrder() {
   const name = useSelector((state) => state.name);
   const sumPrice = useSelector((state) => priceSum(state));
+  const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const [nameValue, setNameValue] = useState(name.name);
   const [telValue, setTelValue] = useState("");
@@ -20,25 +21,34 @@ function NewOrder() {
     return result;
   }
 
-  const newUser = {
-    username: nameValue,
-    number: telValue,
-    address: addressValue,
-    orderCode: generateCode(),
+  // const newOrder = {
+  //   name: nameValue,
+  //   number: telValue,
+  //   address: addressValue,
+  //   orderCode: generateCode(),
+  // };
+
+  const newOrder = {
+    status: "success",
+    data: { customer: "sara", status: "preparing", priority: false },
   };
 
   const fetchPost = async () => {
     try {
       const response = await fetch(
-        `https://react-fast-pizza-api.onrender.com/api/order/${newUser.orderCode}`,
+        `https://react-fast-pizza-api.onrender.com/api/order`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUser),
+          body: JSON.stringify(newOrder),
         }
       );
-      const posts = await response.json();
-      console.log(posts);
+      const data = await response.json();
+      if (!response.ok) {
+        console.log(data.description);
+        return;
+      }
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
