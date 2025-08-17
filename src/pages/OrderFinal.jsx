@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { formatDistanceToNow } from "date-fns";
+import { differenceInMinutes } from "date-fns";
 
 function OrderFinal() {
   const cart = useSelector((state) => state.cart);
@@ -10,11 +10,17 @@ function OrderFinal() {
 
   function formatDate(string) {
     const utcDate = new Date(string);
-    // const index = string.indexOf("T");
-    // const dateOfUploading = string.slice(0, index).split("-");
-    // const timeAgo = formatDistanceToNow(dateOfUploading, { addSuffix: true });
-    // return timeAgo.replace("about ", "");
-    return utcDate.toLocaleString();
+    const localDate = utcDate.toLocaleString();
+    return localDate;
+  }
+
+  function calculateEstimatedTime(string) {
+    const utcDate = new Date(string);
+    const estimatedTime = Math.abs(differenceInMinutes(new Date(), utcDate));
+
+    if (estimatedTime !== 0) {
+      return estimatedTime;
+    } else return "0";
   }
 
   useEffect(() => {
@@ -33,8 +39,6 @@ function OrderFinal() {
     fetchPost();
   }, []);
 
-  console.log(orderInfo);
-
   return (
     <section className="section-final">
       <div className="order-num-cont">
@@ -45,7 +49,10 @@ function OrderFinal() {
         </div>
       </div>
       <div className="delivery-time-cont">
-        <p className="bold-text">Only 40 minutes left 😃</p>
+        <p className="bold-text">
+          Only {calculateEstimatedTime(orderInfo?.estimatedDelivery)} minutes
+          left 😃
+        </p>
         <p className="estimated-delivery-text">
           (Estimated delivery: {formatDate(orderInfo?.estimatedDelivery)})
         </p>
