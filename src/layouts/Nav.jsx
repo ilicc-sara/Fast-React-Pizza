@@ -1,13 +1,28 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 function Nav() {
   const name = useSelector((state) => state.name);
+  const [value, setValue] = useState("");
+  const navigate = useNavigate();
+
+  function submitForm(e) {
+    e.preventDefault();
+    navigate(`/order/${value}`);
+    if (value === "") return;
+  }
 
   return (
     <nav>
       <p>Fast react pizza co.</p>
-      <form>
-        <input className="input-code" placeholder="Search order #" />
+      <form onSubmit={submitForm}>
+        <input
+          className="input-code"
+          placeholder="Search order #"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
         <button className="hidden">Submit</button>
       </form>
       <p className={`${name.name === "" ? "hidden" : ""}`}>

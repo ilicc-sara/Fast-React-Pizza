@@ -44,10 +44,10 @@ function OrderFinal() {
         ))}
       </ul>
       <div className="final-price-cont">
-        <p>Price pizza: ${orderInfo.orderPrice.toFixed(2)}</p>
+        <p>Price pizza: ${orderInfo?.orderPrice.toFixed(2)}</p>
         <p>
           To pay on delivery: $
-          {(orderInfo.orderPrice + orderInfo.priorityPrice).toFixed(2)}
+          {(orderInfo?.orderPrice + orderInfo?.priorityPrice).toFixed(2)}
         </p>
       </div>
     </section>
