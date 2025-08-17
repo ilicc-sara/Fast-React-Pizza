@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { differenceInMinutes } from "date-fns";
 
 function OrderFinal() {
-  const cart = useSelector((state) => state.cart);
   const params = useParams();
   const [orderInfo, setOrderInfo] = useState(null);
 
