@@ -521,6 +521,11 @@ nav p {
   justify-content: space-between;
 }
 
+.estimated-delivery-text {
+  font-size: 14px;
+  color: gray;
+}
+
 .final-order-list {
   list-style: none;
   border-top: 0.5px solid rgb(222, 222, 222);

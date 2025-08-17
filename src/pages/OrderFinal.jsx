@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
 
 function OrderFinal() {
   const cart = useSelector((state) => state.cart);
   const params = useParams();
   const [orderInfo, setOrderInfo] = useState(null);
+
+  function formatDate(string) {
+    const utcDate = new Date(string);
+    // const index = string.indexOf("T");
+    // const dateOfUploading = string.slice(0, index).split("-");
+    // const timeAgo = formatDistanceToNow(dateOfUploading, { addSuffix: true });
+    // return timeAgo.replace("about ", "");
+    return utcDate.toLocaleString();
+  }
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -36,7 +46,9 @@ function OrderFinal() {
       </div>
       <div className="delivery-time-cont">
         <p className="bold-text">Only 40 minutes left 😃</p>
-        <p>(Estimated delivery: Aug 13, 07:57 PM)</p>
+        <p className="estimated-delivery-text">
+          (Estimated delivery: {formatDate(orderInfo?.estimatedDelivery)})
+        </p>
       </div>
       <ul className="final-order-list">
         {orderInfo?.cart.map((item, index) => (
