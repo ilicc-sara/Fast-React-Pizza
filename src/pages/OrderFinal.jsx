@@ -29,7 +29,10 @@ function OrderFinal() {
     <section className="section-final">
       <div className="order-num-cont">
         <p className="cart-heading">Order #{params.orderId} status</p>{" "}
-        <div className="preparing-order">Preparing order</div>
+        <div className="marks">
+          {orderInfo?.priority && <div className="priority-mark">Priority</div>}
+          <div className="preparing-mark">Preparing order</div>
+        </div>
       </div>
       <div className="delivery-time-cont">
         <p>Only 40 minutes left 😃</p>
@@ -45,6 +48,9 @@ function OrderFinal() {
       </ul>
       <div className="final-price-cont">
         <p>Price pizza: ${orderInfo?.orderPrice.toFixed(2)}</p>
+        {orderInfo?.priority && (
+          <p>Price priority: ${orderInfo?.priorityPrice.toFixed(2)}</p>
+        )}
         <p>
           To pay on delivery: $
           {(orderInfo?.orderPrice + orderInfo?.priorityPrice).toFixed(2)}
