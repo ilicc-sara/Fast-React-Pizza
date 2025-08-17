@@ -35,23 +35,30 @@ function OrderFinal() {
         </div>
       </div>
       <div className="delivery-time-cont">
-        <p>Only 40 minutes left 😃</p>
+        <p className="bold-text">Only 40 minutes left 😃</p>
         <p>(Estimated delivery: Aug 13, 07:57 PM)</p>
       </div>
       <ul className="final-order-list">
         {orderInfo?.cart.map((item, index) => (
           <li key={index} className="final-order-item">
-            {item.quantity} &times; {item.name}
-            <span>${item.totalPrice.toFixed(2)}</span>
+            <p>
+              <span className="bold-text">{item.quantity} &times; </span>
+              {item.name}
+            </p>
+            <span className="bold-text">${item.totalPrice.toFixed(2)}</span>
           </li>
         ))}
       </ul>
       <div className="final-price-cont">
-        <p>Price pizza: ${orderInfo?.orderPrice.toFixed(2)}</p>
+        <p className="primary-text">
+          Price pizza: ${orderInfo?.orderPrice.toFixed(2)}
+        </p>
         {orderInfo?.priority && (
-          <p>Price priority: ${orderInfo?.priorityPrice.toFixed(2)}</p>
+          <p className="primary-text">
+            Price priority: ${orderInfo?.priorityPrice.toFixed(2)}
+          </p>
         )}
-        <p>
+        <p className="bold-text">
           To pay on delivery: $
           {(orderInfo?.orderPrice + orderInfo?.priorityPrice).toFixed(2)}
         </p>
