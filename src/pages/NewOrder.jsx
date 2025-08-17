@@ -12,6 +12,7 @@ function NewOrder() {
   const [nameValue, setNameValue] = useState(name.name);
   const [telValue, setTelValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
+  const [priority, setPriority] = useState(false);
 
   const newOrder = {
     address: addressValue,
@@ -22,7 +23,7 @@ function NewOrder() {
     orderPrice: sumPrice,
     phone: telValue,
     position: "",
-    priority: false,
+    priority: priority,
     priorityPrice: sumPrice + sumPrice / 20,
     status: "preparing",
   };
@@ -85,7 +86,12 @@ function NewOrder() {
         </div>
 
         <div className="priority-order">
-          <input className="input-checkbox" type="checkbox" />
+          <input
+            className="input-checkbox"
+            type="checkbox"
+            checked={priority}
+            onChange={(e) => setPriority(e.target.checked)}
+          />
           <p>Want to give your order priority?</p>
         </div>
 

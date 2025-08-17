@@ -9,8 +9,9 @@ function Nav() {
 
   function submitForm(e) {
     e.preventDefault();
-    navigate(`/order/${value}`);
     if (value === "") return;
+    navigate(`/order/${value}`);
+    setValue("");
   }
 
   return (
