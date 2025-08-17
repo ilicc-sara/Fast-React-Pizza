@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 function OrderFinal() {
   const cart = useSelector((state) => state.cart);
   const params = useParams();
+  const [orderInfo, setOrderInfo] = useState(null);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -13,7 +14,7 @@ function OrderFinal() {
           `https://react-fast-pizza-api.onrender.com/api/order/${params.orderId}`
         );
         const data = await response.json();
-        console.log("order final", data);
+        setOrderInfo(data.data);
       } catch (error) {
         console.log(error);
       }
@@ -21,6 +22,8 @@ function OrderFinal() {
 
     fetchPost();
   }, []);
+
+  console.log(orderInfo);
 
   return (
     <section className="section-final">
@@ -33,16 +36,19 @@ function OrderFinal() {
         <p>(Estimated delivery: Aug 13, 07:57 PM)</p>
       </div>
       <ul className="final-order-list">
-        {cart.map((item, index) => (
+        {orderInfo?.cart.map((item, index) => (
           <li key={index} className="final-order-item">
-            {item.amount} &times; {item.title}
-            <span>${(item.price * item.amount).toFixed(2)}</span>
+            {item.quantity} &times; {item.name}
+            <span>${item.totalPrice.toFixed(2)}</span>
           </li>
         ))}
       </ul>
       <div className="final-price-cont">
-        <p>Price pizza: $59.00</p>
-        <p>To pay on delivery: $59.00</p>
+        <p>Price pizza: ${orderInfo.orderPrice.toFixed(2)}</p>
+        <p>
+          To pay on delivery: $
+          {(orderInfo.orderPrice + orderInfo.priorityPrice).toFixed(2)}
+        </p>
       </div>
     </section>
   );
