@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 function OrderFinal() {
   const cart = useSelector((state) => state.cart);
+  const params = useParams();
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `https://react-fast-pizza-api.onrender.com/api/order/YKJJHI`
+          `https://react-fast-pizza-api.onrender.com/api/order/${params.orderId}`
         );
         const data = await response.json();
+        console.log("order final", data);
       } catch (error) {
         console.log(error);
       }
@@ -22,7 +25,7 @@ function OrderFinal() {
   return (
     <section className="section-final">
       <div className="order-num-cont">
-        <p className="cart-heading">Order #J454MM4L4C164 status</p>{" "}
+        <p className="cart-heading">Order #{params.orderId} status</p>{" "}
         <div className="preparing-order">Preparing order</div>
       </div>
       <div className="delivery-time-cont">

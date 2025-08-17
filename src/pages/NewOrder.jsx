@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
@@ -13,22 +13,12 @@ function NewOrder() {
   const [telValue, setTelValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
 
-  function generateCode(length = 6) {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let result = "";
-    for (let i = 0; i < length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-  }
-
   const newOrder = {
     address: addressValue,
     cart: cart,
     createdAt: "2025-08-16T21:05:25.813Z",
     customer: nameValue,
     estimatedDelivery: "2025-08-16T22:12:25.813Z",
-    id: generateCode(),
     orderPrice: sumPrice,
     phone: telValue,
     position: "",
@@ -36,7 +26,6 @@ function NewOrder() {
     priorityPrice: sumPrice + sumPrice / 20,
     status: "preparing",
   };
-
   const fetchPost = async () => {
     try {
       const response = await fetch(
@@ -53,6 +42,7 @@ function NewOrder() {
         return;
       }
       console.log(data);
+      navigate(`/order/${data.data.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +50,6 @@ function NewOrder() {
 
   function submitForm(e) {
     e.preventDefault();
-    navigate(`/order/${newOrder.id}`);
     fetchPost();
   }
   return (
