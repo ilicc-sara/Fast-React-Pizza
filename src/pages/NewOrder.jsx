@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 
 function NewOrder() {
   const name = useSelector((state) => state.name);
@@ -36,6 +35,7 @@ function NewOrder() {
         }
       );
       const data = await response.json();
+
       if (!response.ok) {
         console.log(data.description);
         return;

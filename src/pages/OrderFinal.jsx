@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { differenceInMinutes } from "date-fns";
 import { useDispatch } from "react-redux";
 import { toggleLoading } from "../redux/loadingSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 function OrderFinal() {
   const params = useParams();
@@ -34,6 +35,7 @@ function OrderFinal() {
           `https://react-fast-pizza-api.onrender.com/api/order/${params.orderId}`
         );
         const data = await response.json();
+        toast.success("Order successful");
         setOrderInfo(data.data);
         dispatch(toggleLoading({ isLoading: false }));
       } catch (error) {
@@ -46,6 +48,7 @@ function OrderFinal() {
 
   return (
     <section className="section-final">
+      <ToastContainer position="top-center" />
       {loading.isLoading && <div className="loader"></div>}
       <div className="order-num-cont">
         <p className="cart-heading">Order #{params.orderId} status</p>{" "}
