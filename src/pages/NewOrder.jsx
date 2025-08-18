@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 function NewOrder() {
   const name = useSelector((state) => state.name);
@@ -38,6 +39,7 @@ function NewOrder() {
 
       if (!response.ok) {
         console.log(data.description);
+        toast.error("Error, something went wrong");
         return;
       }
       console.log(data);
@@ -53,6 +55,7 @@ function NewOrder() {
   }
   return (
     <section className="new-order-section">
+      <ToastContainer position="top-center" />
       <p className="cart-heading">Ready to order? Let's go!</p>
       <form onSubmit={submitForm} className="order-form">
         <div className="input-cont">
