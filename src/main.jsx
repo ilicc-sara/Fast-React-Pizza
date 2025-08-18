@@ -12,6 +12,7 @@ import NewOrder from "./pages/NewOrder.jsx";
 import OrderFinal from "./pages/OrderFinal.jsx";
 
 import SharedLayout from "./layouts/sharedLayout.jsx";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
