@@ -1,15 +1,3 @@
-// import {
-//   addToCart,
-//   increaseAmount,
-//   decreaseAmount,
-//   deleteCartItem,
-// } from "../redux/cartSlice";
-// import {
-//   addToCart,
-//   increaseAmount,
-//   decreaseAmount,
-//   deleteCartItem,
-// } from "../../../redux/cartSlice";
 import {
   addToCart,
   increaseAmount,

@@ -3,9 +3,7 @@ import { useDispatch } from "react-redux";
 import { setName } from "@/redux/slice";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-//
 import { toggleLoading } from "../redux/loadingSlice";
-//
 
 function Home() {
   const [value, setValue] = useState("");
