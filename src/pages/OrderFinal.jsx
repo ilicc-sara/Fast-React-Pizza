@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { differenceInMinutes } from "date-fns";
+import { useDispatch } from "react-redux";
+import { toggleLoading } from "../redux/loadingSlice";
 
 function OrderFinal() {
   const params = useParams();
   const [orderInfo, setOrderInfo] = useState(null);
+  const loading = useSelector((state) => state.loading);
+  const dispatch = useDispatch();
 
   function formatDate(string) {
     const utcDate = new Date(string);
@@ -25,11 +29,13 @@ function OrderFinal() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        dispatch(toggleLoading({ isLoading: true }));
         const response = await fetch(
           `https://react-fast-pizza-api.onrender.com/api/order/${params.orderId}`
         );
         const data = await response.json();
         setOrderInfo(data.data);
+        dispatch(toggleLoading({ isLoading: false }));
       } catch (error) {
         console.log(error);
       }
@@ -40,6 +46,7 @@ function OrderFinal() {
 
   return (
     <section className="section-final">
+      {loading.isLoading && <div className="loader"></div>}
       <div className="order-num-cont">
         <p className="cart-heading">Order #{params.orderId} status</p>{" "}
         <div className="marks">

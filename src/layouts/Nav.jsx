@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toggleLoading } from "../redux/loadingSlice";
 
 function Nav() {
   const name = useSelector((state) => state.name);
+
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
   function submitForm(e) {
     e.preventDefault();
+    dispatch(toggleLoading({ isLoading: true }));
     if (value === "") return;
     navigate(`/order/${value}`);
     setValue("");
