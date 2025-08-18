@@ -57,3 +57,29 @@ If you are developing a production application, we recommend using TypeScript wi
 // position: "",
 // priority: false,
 // };
+
+/////////////////////////////////////////////////////////////////
+
+import { useGeolocated } from "react-geolocated";
+
+// const [lat, setLat] = useState(null);
+// const [long, setLong] = useState(null);
+
+// const geolocationAPI = navigator.geolocation;
+// const getUserCoordinates = () => {
+// if (!geolocationAPI) {
+// console.log("Geolocation API is not available in your browser!");
+// } else {
+// geolocationAPI.getCurrentPosition(
+// (position) => {
+// const { coords } = position;
+// setLat(coords.latitude);
+// setLong(coords.longitude);
+// codeLatLng(coords.latitude, coords.longitude);
+// },
+// (error) => {
+// console.log("Something went wrong getting your position!");
+// }
+// );
+// }
+// };

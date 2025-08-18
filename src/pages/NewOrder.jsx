@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
-import { useGeolocated } from "react-geolocated";
 
 function NewOrder() {
   const name = useSelector((state) => state.name);
@@ -14,31 +13,10 @@ function NewOrder() {
   const [telValue, setTelValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
   const [priority, setPriority] = useState(false);
-  const [lat, setLat] = useState(null);
-  const [long, setLong] = useState(null);
-
-  const geolocationAPI = navigator.geolocation;
-  const getUserCoordinates = () => {
-    if (!geolocationAPI) {
-      console.log("Geolocation API is not available in your browser!");
-    } else {
-      geolocationAPI.getCurrentPosition(
-        (position) => {
-          const { coords } = position;
-          setLat(coords.latitude);
-          setLong(coords.longitude);
-          codeLatLng(coords.latitude, coords.longitude);
-        },
-        (error) => {
-          console.log("Something went wrong getting your position!");
-        }
-      );
-    }
-  };
 
   const newOrder = {
     address: addressValue,
-    cart: [],
+    cart: cart,
     customer: nameValue,
     orderPrice: sumPrice,
     phone: telValue,
