@@ -38,15 +38,12 @@ function NewOrder() {
 
   const newOrder = {
     address: addressValue,
-    cart: cart,
-    createdAt: "2025-08-16T21:05:25.813Z",
+    cart: [],
     customer: nameValue,
-    estimatedDelivery: "2025-08-16T22:12:25.813Z",
     orderPrice: sumPrice,
     phone: telValue,
     position: "",
     priority: priority,
-    priorityPrice: sumPrice + sumPrice / 20,
     status: "preparing",
   };
   const fetchPost = async () => {
@@ -85,7 +82,6 @@ function NewOrder() {
             type="text"
             value={nameValue}
             onChange={(e) => setNameValue(e.targetValue)}
-            required
           />
         </div>
         <div className="input-cont">
@@ -94,7 +90,6 @@ function NewOrder() {
             type="tel"
             value={telValue}
             onChange={(e) => setTelValue(e.target.value)}
-            required
           />
         </div>
         <div className="input-cont">
@@ -103,7 +98,6 @@ function NewOrder() {
             type="text"
             value={addressValue}
             onChange={(e) => setAddressValue(e.target.value)}
-            required
           />
         </div>
 
