@@ -11,7 +11,7 @@ function NewOrder() {
 
   const navigate = useNavigate();
   const [nameValue, setNameValue] = useState(name.name);
-  const [telValue, setTelValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
   const [priority, setPriority] = useState(false);
 
@@ -20,7 +20,7 @@ function NewOrder() {
     cart: cart,
     customer: nameValue,
     orderPrice: sumPrice,
-    phone: telValue,
+    phone: phoneValue,
     position: "",
     priority: priority,
     status: "preparing",
@@ -64,14 +64,16 @@ function NewOrder() {
             type="text"
             value={nameValue}
             onChange={(e) => setNameValue(e.targetValue)}
+            required
           />
         </div>
         <div className="input-cont">
           <label>Phone Number</label>
           <input
-            type="tel"
-            value={telValue}
-            onChange={(e) => setTelValue(e.target.value)}
+            type="number"
+            value={phoneValue}
+            onChange={(e) => setPhoneValue(e.target.value)}
+            required
           />
         </div>
         <div className="input-cont">
@@ -80,6 +82,7 @@ function NewOrder() {
             type="text"
             value={addressValue}
             onChange={(e) => setAddressValue(e.target.value)}
+            required
           />
         </div>
 
