@@ -17,13 +17,11 @@ function NewOrder() {
 
   const newOrder = {
     address: addressValue,
-    cart: cart,
+    cart: [],
     customer: nameValue,
     orderPrice: sumPrice,
     phone: phoneValue,
-    position: "",
     priority: priority,
-    status: "preparing",
   };
   const fetchPost = async () => {
     try {
@@ -46,6 +44,7 @@ function NewOrder() {
       navigate(`/order/${data.data.id}`);
     } catch (error) {
       console.log(error);
+      toast.error("Error, something went wrong");
     }
   };
 
