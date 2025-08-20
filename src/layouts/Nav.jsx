@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function Nav() {
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.name.name);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
@@ -26,10 +26,7 @@ function Nav() {
         />
         <button className="hidden">Submit</button>
       </form>
-      <p className={`${name.name === "" ? "hidden" : ""}`}>
-        {" "}
-        {name.name.toUpperCase()}{" "}
-      </p>
+      <p className={`${name === "" ? "hidden" : ""}`}> {name.toUpperCase()} </p>
     </nav>
   );
 }
