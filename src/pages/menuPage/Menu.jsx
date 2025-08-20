@@ -9,8 +9,8 @@ function Menu() {
   const [menuItems, setMenuItems] = useState([]);
 
   const cart = useSelector((state) => state.cart);
-  const loading = useSelector((state) => state.loading);
-  console.log(loading);
+  const loading = useSelector((state) => state.loading.isLoading);
+
   const dispatch = useDispatch();
 
   const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
@@ -33,7 +33,7 @@ function Menu() {
 
   return (
     <section className="menu-section">
-      {loading.isLoading && <div className="loader"></div>}
+      {loading && <div className="loader"></div>}
       <ul className="menu-items">
         {menuItems.length !== 0 &&
           menuItems.map((item, index) => (

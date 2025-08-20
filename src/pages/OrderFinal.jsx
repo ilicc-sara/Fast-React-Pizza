@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 function OrderFinal() {
   const params = useParams();
   const [orderInfo, setOrderInfo] = useState(null);
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.loading.isLoading);
   const dispatch = useDispatch();
 
   function formatDate(string) {
@@ -49,7 +49,7 @@ function OrderFinal() {
   return (
     <section className="section-final">
       <ToastContainer position="top-center" />
-      {loading.isLoading && <div className="loader"></div>}
+      {loading && <div className="loader"></div>}
       <div className="order-num-cont">
         <p className="cart-heading">Order #{params.orderId} status</p>{" "}
         <div className="marks">

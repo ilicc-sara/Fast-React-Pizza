@@ -5,19 +5,20 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 function NewOrder() {
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.name.name);
   const sumPrice = useSelector((state) => priceSum(state));
   const cart = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
-  const [nameValue, setNameValue] = useState(name.name);
+  const [nameValue, setNameValue] = useState(name);
   const [phoneValue, setPhoneValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
   const [priority, setPriority] = useState(false);
 
   const newOrder = {
     address: addressValue,
-    cart: [],
+    // cart: [],
+    cart: cart,
     customer: nameValue,
     orderPrice: sumPrice,
     phone: phoneValue,

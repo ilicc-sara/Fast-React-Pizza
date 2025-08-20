@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import FooterCart from "../../components/FooterCart";
 
 function Cart() {
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.name.name);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ function Cart() {
       {cart.length !== 0 && (
         <>
           <div className="cart-cont">
-            <p className="cart-heading">Your cart, {name.name}</p>
+            <p className="cart-heading">Your cart, {name}</p>
             <CartItem />
           </div>
 

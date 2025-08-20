@@ -9,9 +9,9 @@ function Home() {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.name.name);
 
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.loading.isLoading);
 
   function submitForm(e) {
     e.preventDefault();
@@ -22,19 +22,19 @@ function Home() {
   }
   return (
     <section className="home-section">
-      {loading.isLoading && <div className="loader"></div>}
+      {loading && <div className="loader"></div>}
       <p className="home-intro-heading">The best pizza.</p>
       <h1 className="home-intro-description">
         Straight out of the oven, straight to you.
       </h1>
 
-      {name.name === "" && (
+      {name === "" && (
         <p className="welcome-text">
           👋 Welcome! Please start by telling us your name:
         </p>
       )}
 
-      {name.name === "" && (
+      {name === "" && (
         <form onSubmit={submitForm} className="name-form">
           <input
             className="input-name"
@@ -50,11 +50,9 @@ function Home() {
         </form>
       )}
 
-      {name.name !== "" && (
+      {name !== "" && (
         <Link to="/menu">
-          <button className="btn start-btn">
-            Continue Ordering, {name.name}
-          </button>
+          <button className="btn start-btn">Continue Ordering, {name}</button>
         </Link>
       )}
     </section>
