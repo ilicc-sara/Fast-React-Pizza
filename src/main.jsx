@@ -10,7 +10,6 @@ import Home from "./pages/Home.jsx";
 import Cart from "./pages/cartPage/Cart.jsx";
 import NewOrder from "./pages/NewOrder.jsx";
 import OrderFinal from "./pages/OrderFinal.jsx";
-
 import SharedLayout from "./layouts/sharedLayout.jsx";
 import "react-toastify/dist/ReactToastify.css";
 

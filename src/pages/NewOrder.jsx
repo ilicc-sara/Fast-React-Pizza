@@ -34,18 +34,23 @@ function NewOrder() {
           body: JSON.stringify(newOrder),
         }
       );
+      console.log(response.status);
       const data = await response.json();
 
-      if (!response.ok) {
-        console.log(data.description);
-        toast.error("Error, something went wrong");
-        return;
-      }
+      // if (!response.ok) {
+      //   // console.log(data.description);
+      //   toast.error("Error, something went wrong");
+      //   return;
+      // }
+
       console.log(data);
+      toast.error(data.message);
       navigate(`/order/${data.data.id}`);
     } catch (error) {
-      console.log(error);
-      toast.error("Error, something went wrong");
+      console.log(error.response);
+      // toast.error("Error, something went wrong");
+      // let errorJson = JSON.parse(error);
+      // console.log(errorJson);
     }
   };
 
@@ -63,8 +68,7 @@ function NewOrder() {
           <input
             type="text"
             value={nameValue}
-            onChange={(e) => setNameValue(e.targetValue)}
-            required
+            onChange={(e) => setNameValue(e.target.value)}
           />
         </div>
         <div className="input-cont">
@@ -73,7 +77,6 @@ function NewOrder() {
             type="number"
             value={phoneValue}
             onChange={(e) => setPhoneValue(e.target.value)}
-            required
           />
         </div>
         <div className="input-cont">
@@ -82,7 +85,6 @@ function NewOrder() {
             type="text"
             value={addressValue}
             onChange={(e) => setAddressValue(e.target.value)}
-            required
           />
         </div>
 
