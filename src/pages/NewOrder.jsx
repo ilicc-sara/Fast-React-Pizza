@@ -37,20 +37,14 @@ function NewOrder() {
       console.log(response.status);
       const data = await response.json();
 
-      // if (!response.ok) {
-      //   // console.log(data.description);
-      //   toast.error("Error, something went wrong");
-      //   return;
-      // }
+      if (!response.ok) {
+        console.log(data);
+        toast.error(data.message);
+      }
 
-      console.log(data);
-      toast.error(data.message);
       navigate(`/order/${data.data.id}`);
     } catch (error) {
       console.log(error.response);
-      // toast.error("Error, something went wrong");
-      // let errorJson = JSON.parse(error);
-      // console.log(errorJson);
     }
   };
 

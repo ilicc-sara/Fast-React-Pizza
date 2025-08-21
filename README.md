@@ -83,3 +83,35 @@ import { useGeolocated } from "react-geolocated";
 // );
 // }
 // };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+const fetchPost = async () => {
+try {
+const response = await fetch(
+`https://react-fast-pizza-api.onrender.com/api/order`,
+{
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify(newOrder),
+}
+);
+console.log(response.status);
+const data = await response.json();
+
+      // if (!response.ok) {
+      //   // console.log(data.description);
+      //   toast.error("Error, something went wrong");
+      //   return;
+      // }
+
+      console.log(data);
+      toast.error(data.message);
+      navigate(`/order/${data.data.id}`);
+    } catch (error) {
+      console.log(error.response);
+      // toast.error("Error, something went wrong");
+      // let errorJson = JSON.parse(error);
+      // console.log(errorJson);
+    }
+
+};
