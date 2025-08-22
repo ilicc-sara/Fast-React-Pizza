@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
@@ -65,17 +65,19 @@ function NewOrder() {
               `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
             );
 
-            // const data = await response.json();
-            console.log(data);
-            console.log(data.results[0].formatted_address);
+            const data = await response.json();
+            console.log(
+              data.address.suburb,
+              data.address.city,
+              data.address.country
+            );
+            setAddressValue(
+              `${data.address.suburb}, ${data.address.city}, ${data.address.country}`
+            );
 
-            if (!response.ok) {
-              console.log(data);
-              toast.error(data.message);
-              return;
-            }
+            if (!response.ok) return;
           } catch (error) {
-            console.log(error.response);
+            console.log(error);
           }
         };
         fetchLocation();
@@ -118,7 +120,10 @@ function NewOrder() {
           <button
             type="button"
             className="btn location-btn"
-            onClick={() => getMyLocation()}
+            onClick={(e) => {
+              e.target.classList.add("hidden");
+              getMyLocation();
+            }}
           >
             Get Position
           </button>
