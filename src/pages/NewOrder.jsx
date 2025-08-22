@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
@@ -17,8 +17,8 @@ function NewOrder() {
 
   const newOrder = {
     address: addressValue,
-    cart: [],
-    // cart: cart,
+    // cart: [],
+    cart: cart,
     customer: nameValue,
     orderPrice: sumPrice,
     phone: phoneValue,
@@ -52,6 +52,16 @@ function NewOrder() {
     e.preventDefault();
     fetchPost();
   }
+
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      const { latitude, longitude } = position.coords;
+      console.log(latitude, longitude);
+    },
+    function () {
+      toast.error("Could not get our position");
+    }
+  );
   return (
     <section className="new-order-section">
       <ToastContainer position="top-center" />
