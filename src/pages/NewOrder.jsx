@@ -17,8 +17,8 @@ function NewOrder() {
 
   const newOrder = {
     address: addressValue,
-    // cart: [],
-    cart: cart,
+    cart: [],
+    // cart: cart,
     customer: nameValue,
     orderPrice: sumPrice,
     phone: phoneValue,
@@ -40,8 +40,8 @@ function NewOrder() {
       if (!response.ok) {
         console.log(data);
         toast.error(data.message);
+        return;
       }
-
       navigate(`/order/${data.data.id}`);
     } catch (error) {
       console.log(error.response);
