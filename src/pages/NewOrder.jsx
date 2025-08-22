@@ -53,15 +53,38 @@ function NewOrder() {
     fetchPost();
   }
 
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      const { latitude, longitude } = position.coords;
-      console.log(latitude, longitude);
-    },
-    function () {
-      toast.error("Could not get our position");
-    }
-  );
+  function getMyLocation() {
+    navigator.geolocation.watchPosition(
+      function (position) {
+        console.log(position);
+        const { latitude, longitude } = position.coords;
+        console.log(latitude, longitude);
+      },
+      function () {
+        toast.error("Could not get our position");
+      }
+    );
+    const fetchLocation = async () => {
+      try {
+        const response = await fetch(
+          `http://maps.googleapis.com/maps/api/geocode/json?latlng=44.4647452,7.3553838&sensor=true`
+        );
+
+        const data = await response.json();
+        console.log(data);
+        console.log(data.results[0].formatted_address);
+
+        if (!response.ok) {
+          console.log(data);
+          toast.error(data.message);
+          return;
+        }
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    fetchLocation();
+  }
   return (
     <section className="new-order-section">
       <ToastContainer position="top-center" />
@@ -92,7 +115,11 @@ function NewOrder() {
               onChange={(e) => setAddressValue(e.target.value)}
             />
           </div>
-          <button type="button" className="btn location-btn">
+          <button
+            type="button"
+            className="btn location-btn"
+            onClick={() => getMyLocation()}
+          >
             Get Position
           </button>
         </div>
