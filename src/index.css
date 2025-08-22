@@ -450,9 +450,21 @@ nav p {
 
 .location-btn {
   position: absolute;
-  right: 10%;
+  right: 5%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-49%);
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+  height: 40px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 15px;
+  border-radius: 222px;
+  font-weight: 550;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border: 2px solid white;
+  width: fit-content;
 }
 
 .priority-order {

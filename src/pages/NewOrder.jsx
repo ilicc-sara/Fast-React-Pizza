@@ -83,7 +83,7 @@ function NewOrder() {
             />
           </div>
           <button type="button" className="btn location-btn">
-            Get Location
+            Get Position
           </button>
         </div>
 
