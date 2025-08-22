@@ -56,34 +56,34 @@ function NewOrder() {
   function getMyLocation() {
     navigator.geolocation.watchPosition(
       function (position) {
-        console.log(position);
+        // console.log(position);
         const { latitude, longitude } = position.coords;
-        console.log(latitude, longitude);
+        // console.log(latitude, longitude);
+        const fetchLocation = async () => {
+          try {
+            const response = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+            );
+
+            // const data = await response.json();
+            console.log(data);
+            console.log(data.results[0].formatted_address);
+
+            if (!response.ok) {
+              console.log(data);
+              toast.error(data.message);
+              return;
+            }
+          } catch (error) {
+            console.log(error.response);
+          }
+        };
+        fetchLocation();
       },
       function () {
         toast.error("Could not get our position");
       }
     );
-    const fetchLocation = async () => {
-      try {
-        const response = await fetch(
-          `http://maps.googleapis.com/maps/api/geocode/json?latlng=44.4647452,7.3553838&sensor=true`
-        );
-
-        const data = await response.json();
-        console.log(data);
-        console.log(data.results[0].formatted_address);
-
-        if (!response.ok) {
-          console.log(data);
-          toast.error(data.message);
-          return;
-        }
-      } catch (error) {
-        console.log(error.response);
-      }
-    };
-    fetchLocation();
   }
   return (
     <section className="new-order-section">
