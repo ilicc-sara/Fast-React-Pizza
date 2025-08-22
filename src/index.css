@@ -443,6 +443,18 @@ nav p {
   outline: none;
 }
 
+.location-cont {
+  opacity: 1;
+  position: relative;
+}
+
+.location-btn {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .priority-order {
   display: flex;
   align-items: center;

@@ -75,11 +75,16 @@ function NewOrder() {
         </div>
         <div className="input-cont">
           <label>Address</label>
-          <input
-            type="text"
-            value={addressValue}
-            onChange={(e) => setAddressValue(e.target.value)}
-          />
+          <div className="location-cont">
+            <input
+              type="text"
+              value={addressValue}
+              onChange={(e) => setAddressValue(e.target.value)}
+            />
+          </div>
+          <button type="button" className="btn location-btn">
+            Get Location
+          </button>
         </div>
 
         <div className="priority-order">
