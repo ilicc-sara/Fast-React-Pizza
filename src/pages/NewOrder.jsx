@@ -108,12 +108,6 @@ function NewOrder() {
         </div>
         <div className="input-cont">
           <label>Phone Number</label>
-          <input
-            type="number"
-            value={inputs.phoneValue}
-            name="phoneValue"
-            onChange={(e) => handleInputChange(e)}
-          />
           <Input
             type="number"
             value={inputs.phoneValue}

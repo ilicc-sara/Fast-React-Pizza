@@ -116,6 +116,14 @@ const data = await response.json();
 
 };
 
+ <!-- {/* <button
+            className={`btn ${value.length === 0 ? "hidden" : "start-btn"}`}
+            type="submit"
+          >
+            Start Ordering
+          </button> */}
+ {/* <button className="btn start-btn">Continue Ordering, {name}</button> */} -->
+
 set up router
 instalirati tailwind
 

@@ -4,6 +4,7 @@ import { setName } from "@/redux/slice";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toggleLoading } from "../redux/loadingSlice";
+import Button from "../components/Button";
 
 function Home() {
   const [value, setValue] = useState("");
@@ -42,17 +43,18 @@ function Home() {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-          <button
-            className={`btn ${value.length === 0 ? "hidden" : "start-btn"}`}
-          >
+
+          <Button variation="home button" value={value} type="submit">
             Start Ordering
-          </button>
+          </Button>
         </form>
       )}
 
       {name !== "" && (
         <Link to="/menu">
-          <button className="btn start-btn">Continue Ordering, {name}</button>
+          <Button variation="home button continue" type="button">
+            Continue Ordering, {name}
+          </Button>
         </Link>
       )}
     </section>
