@@ -9,9 +9,9 @@ const URL = "https://react-fast-pizza-api";
 const URL_MAP = "https://nominatim.openstreetmap.org";
 
 function NewOrder() {
+  const cart = useSelector((state) => state.cart);
   const name = useSelector((state) => state.name.name);
   const sumPrice = useSelector((state) => priceSum(state));
-  const cart = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
 
