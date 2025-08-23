@@ -15,6 +15,12 @@ function NewOrder() {
   const [addressValue, setAddressValue] = useState("");
   const [priority, setPriority] = useState(false);
 
+  const [inputs, setInputs] = useState({
+    valueName: name,
+    valuePhone: "",
+    addressValue: "",
+  });
+
   const newOrder = {
     address: addressValue,
     // cart: [],
@@ -38,13 +44,12 @@ function NewOrder() {
       const data = await response.json();
 
       if (!response.ok) {
-        console.log(data);
         toast.error(data.message);
         return;
       }
       navigate(`/order/${data.data.id}`);
     } catch (error) {
-      console.log(error.response);
+      toast.error("ups");
     }
   };
 
@@ -56,9 +61,8 @@ function NewOrder() {
   function getMyLocation() {
     navigator.geolocation.watchPosition(
       function (position) {
-        // console.log(position);
         const { latitude, longitude } = position.coords;
-        // console.log(latitude, longitude);
+
         const fetchLocation = async () => {
           try {
             const response = await fetch(
@@ -121,7 +125,7 @@ function NewOrder() {
             type="button"
             className="btn location-btn"
             onClick={(e) => {
-              e.target.classList.add("hidden");
+              // e.target.classList.add("hidden");
               getMyLocation();
             }}
           >

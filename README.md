@@ -115,3 +115,8 @@ const data = await response.json();
     }
 
 };
+
+set up router
+instalirati tailwind
+
+napravi hero sekciju i responsive navigaciju
