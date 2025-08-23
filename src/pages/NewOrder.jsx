@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Input from "../components/Input";
 
+const URL = "https://react-fast-pizza-api";
+const URL_MAP = "https://nominatim.openstreetmap.org";
+
 function NewOrder() {
   const name = useSelector((state) => state.name.name);
   const sumPrice = useSelector((state) => priceSum(state));
@@ -31,7 +34,6 @@ function NewOrder() {
 
   const newOrder = {
     address: inputs.addressValue,
-    // cart: [],
     cart: cart,
     customer: inputs.nameValue,
     orderPrice: sumPrice,
@@ -40,14 +42,11 @@ function NewOrder() {
   };
   const fetchOrder = async () => {
     try {
-      const response = await fetch(
-        `https://react-fast-pizza-api.onrender.com/api/order`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newOrder),
-        }
-      );
+      const response = await fetch(`${URL}.onrender.com/api/order`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newOrder),
+      });
       console.log(response.status);
       const data = await response.json();
 
@@ -74,7 +73,7 @@ function NewOrder() {
         const fetchLocation = async () => {
           try {
             const response = await fetch(
-              `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+              `${URL_MAP}/reverse?lat=${latitude}&lon=${longitude}&format=json`
             );
 
             const data = await response.json();
@@ -84,7 +83,7 @@ function NewOrder() {
 
             if (!response.ok) return;
           } catch (error) {
-            console.log(error);
+            toast.error(error);
           }
         };
         fetchLocation();
