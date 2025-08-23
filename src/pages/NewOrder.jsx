@@ -10,16 +10,25 @@ function NewOrder() {
   const cart = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
-  const [nameValue, setNameValue] = useState(name);
-  const [phoneValue, setPhoneValue] = useState("");
-  const [addressValue, setAddressValue] = useState("");
+  // const [nameValue, setNameValue] = useState(name);
+  // const [phoneValue, setPhoneValue] = useState("");
+  // const [addressValue, setAddressValue] = useState("");
   const [priority, setPriority] = useState(false);
 
   const [inputs, setInputs] = useState({
-    valueName: name,
-    valuePhone: "",
+    nameValue: name,
+    phoneValue: "",
     addressValue: "",
   });
+
+  //  function handleInputChange(e) {
+  //   setInputs((prev) => {
+  //     return {
+  //       ...prev,
+  //       personalInfo: { ...prev.personalInfo, [e.target.name]: e.target.value },
+  //     };
+  //   });
+  // }
 
   const newOrder = {
     address: addressValue,
@@ -30,7 +39,7 @@ function NewOrder() {
     phone: phoneValue,
     priority: priority,
   };
-  const fetchPost = async () => {
+  const fetchOrder = async () => {
     try {
       const response = await fetch(
         `https://react-fast-pizza-api.onrender.com/api/order`,
@@ -49,13 +58,13 @@ function NewOrder() {
       }
       navigate(`/order/${data.data.id}`);
     } catch (error) {
-      toast.error("ups");
+      toast.error("Ups, something went wrong...");
     }
   };
 
   function submitForm(e) {
     e.preventDefault();
-    fetchPost();
+    fetchOrder();
   }
 
   function getMyLocation() {
@@ -70,11 +79,6 @@ function NewOrder() {
             );
 
             const data = await response.json();
-            console.log(
-              data.address.suburb,
-              data.address.city,
-              data.address.country
-            );
             setAddressValue(
               `${data.address.suburb}, ${data.address.city}, ${data.address.country}`
             );
@@ -100,16 +104,24 @@ function NewOrder() {
           <label>First Name</label>
           <input
             type="text"
-            value={nameValue}
-            onChange={(e) => setNameValue(e.target.value)}
+            value={inputs.nameValue}
+            onChange={(e) =>
+              setInputs((prev) => {
+                return { ...prev, nameValue: e.target.value };
+              })
+            }
           />
         </div>
         <div className="input-cont">
           <label>Phone Number</label>
           <input
             type="number"
-            value={phoneValue}
-            onChange={(e) => setPhoneValue(e.target.value)}
+            value={inputs.phoneValue}
+            onChange={(e) =>
+              setInputs((prev) => {
+                return { ...prev, phoneValue: e.target.value };
+              })
+            }
           />
         </div>
         <div className="input-cont">
@@ -117,8 +129,12 @@ function NewOrder() {
           <div className="location-cont">
             <input
               type="text"
-              value={addressValue}
-              onChange={(e) => setAddressValue(e.target.value)}
+              value={inputs.addressValue}
+              onChange={(e) =>
+                setInputs((prev) => {
+                  return { ...prev, addressValue: e.target.value };
+                })
+              }
             />
           </div>
           <button
