@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import Input from "../components/Input";
 
 function NewOrder() {
   const name = useSelector((state) => state.name.name);
@@ -10,9 +11,7 @@ function NewOrder() {
   const cart = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
-  // const [nameValue, setNameValue] = useState(name);
-  // const [phoneValue, setPhoneValue] = useState("");
-  // const [addressValue, setAddressValue] = useState("");
+
   const [priority, setPriority] = useState(false);
 
   const [inputs, setInputs] = useState({
@@ -21,22 +20,22 @@ function NewOrder() {
     addressValue: "",
   });
 
-  //  function handleInputChange(e) {
-  //   setInputs((prev) => {
-  //     return {
-  //       ...prev,
-  //       personalInfo: { ...prev.personalInfo, [e.target.name]: e.target.value },
-  //     };
-  //   });
-  // }
+  function handleInputChange(e) {
+    setInputs((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
 
   const newOrder = {
-    address: addressValue,
+    address: inputs.addressValue,
     // cart: [],
     cart: cart,
-    customer: nameValue,
+    customer: inputs.nameValue,
     orderPrice: sumPrice,
-    phone: phoneValue,
+    phone: inputs.phoneValue,
     priority: priority,
   };
   const fetchOrder = async () => {
@@ -102,14 +101,11 @@ function NewOrder() {
       <form onSubmit={submitForm} className="order-form">
         <div className="input-cont">
           <label>First Name</label>
-          <input
+          <Input
             type="text"
             value={inputs.nameValue}
-            onChange={(e) =>
-              setInputs((prev) => {
-                return { ...prev, nameValue: e.target.value };
-              })
-            }
+            name="nameValue"
+            handleInputChange={handleInputChange}
           />
         </div>
         <div className="input-cont">
@@ -117,31 +113,30 @@ function NewOrder() {
           <input
             type="number"
             value={inputs.phoneValue}
-            onChange={(e) =>
-              setInputs((prev) => {
-                return { ...prev, phoneValue: e.target.value };
-              })
-            }
+            name="phoneValue"
+            onChange={(e) => handleInputChange(e)}
+          />
+          <Input
+            type="number"
+            value={inputs.phoneValue}
+            name="phoneValue"
+            handleInputChange={handleInputChange}
           />
         </div>
         <div className="input-cont">
           <label>Address</label>
           <div className="location-cont">
-            <input
+            <Input
               type="text"
               value={inputs.addressValue}
-              onChange={(e) =>
-                setInputs((prev) => {
-                  return { ...prev, addressValue: e.target.value };
-                })
-              }
+              name="addressValue"
+              handleInputChange={handleInputChange}
             />
           </div>
           <button
             type="button"
             className="btn location-btn"
-            onClick={(e) => {
-              // e.target.classList.add("hidden");
+            onClick={() => {
               getMyLocation();
             }}
           >
