@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
 
 function Nav() {
   const name = useSelector((state) => state.name.name);
@@ -18,11 +19,11 @@ function Nav() {
     <nav>
       <p>Fast react pizza co.</p>
       <form onSubmit={submitForm}>
-        <input
+        <Input
           className="input-code"
           placeholder="Search order #"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          handleInputChange={(e) => setValue(e.target.value)}
         />
         <button className="hidden">Submit</button>
       </form>

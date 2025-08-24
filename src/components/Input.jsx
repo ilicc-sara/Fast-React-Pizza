@@ -1,11 +1,12 @@
-import React from "react";
-
 function Input(props) {
-  const { type, value, name, handleInputChange } = props;
+  const { type, value, name, handleInputChange, className, placeholder } =
+    props;
 
   return (
     <input
       type={type}
+      className={`${className}`}
+      placeholder={placeholder}
       value={value}
       name={name}
       onChange={(e) => handleInputChange(e)}
