@@ -111,29 +111,6 @@ nav p {
   outline: none;
 }
 
-.start-btn {
-  background-color: rgb(255, 200, 0);
-  color: rgb(22, 18, 0);
-  height: 50px;
-  text-transform: uppercase;
-  border: none;
-  padding: 0 25px;
-  border-radius: 222px;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 1px;
-  border: 2px solid white;
-}
-
-/* button:active, */
-.btn:focus {
-  box-shadow: 0 0 0 3px rgb(255, 200, 0);
-}
-
-.btn:hover {
-  background-color: rgb(255, 217, 0);
-}
-
 .menu-section {
   position: relative;
 }
@@ -218,65 +195,9 @@ nav p {
   gap: 10px;
 }
 
-.increase-btn,
-.decrease-btn {
-  border: 2px solid white !important;
-}
-
-.increase-btn,
-.decrease-btn {
-  height: 30px;
-  width: 30px;
-  padding: 5px;
-  background-color: rgb(255, 200, 0);
-  color: rgb(22, 18, 0);
-
-  text-transform: uppercase;
-
-  border-radius: 222px;
-
-  font-size: 12px;
-  font-weight: 600;
-}
-
 .amount {
   font-size: 14px;
   font-weight: 600;
-}
-
-.delete-btn {
-  height: 30px;
-
-  padding: 5px 15px;
-
-  background-color: rgb(255, 200, 0);
-  color: rgb(22, 18, 0);
-
-  text-transform: uppercase;
-
-  border-radius: 222px;
-
-  font-size: 12px;
-  font-weight: 600;
-  border: 2px solid white;
-}
-
-.add-btn {
-  height: 30px;
-  margin-top: auto;
-  padding: 5px 15px;
-
-  background-color: rgb(255, 200, 0);
-  color: rgb(22, 18, 0);
-
-  text-transform: uppercase;
-  border: none;
-
-  border-radius: 222px;
-
-  font-size: 12px;
-  font-weight: 600;
-  border: 2px solid white;
 }
 
 .pizza-price-second {
@@ -366,45 +287,6 @@ nav p {
   gap: 15px;
 }
 
-.order-btn {
-  background-color: rgb(255, 200, 0);
-  color: rgb(22, 18, 0);
-  height: 50px;
-  text-transform: uppercase;
-  border: none;
-  padding: 0 25px;
-  border-radius: 222px;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 1px;
-  border: 2px solid white;
-  width: fit-content;
-}
-.clear-btn {
-  background: none;
-  color: rgb(170, 170, 170);
-  height: 50px;
-  text-transform: uppercase;
-  border: none;
-  padding: 0 25px;
-  border-radius: 222px;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 1px;
-  border: 2px solid rgb(170, 170, 170);
-}
-.clear-btn:hover {
-  background-color: rgb(170, 170, 170);
-  color: rgb(18, 18, 18);
-
-  border: 2px solid rgb(170, 170, 170);
-}
-
-.clear-btn:focus {
-  border: 2px solid rgb(255, 255, 255);
-  box-shadow: 0 0 0 3px rgb(200, 200, 200);
-}
-
 .new-order-section {
   position: relative;
   margin: 0 auto;
@@ -446,25 +328,6 @@ nav p {
 .location-cont {
   opacity: 1;
   position: relative;
-}
-
-.location-btn {
-  position: absolute;
-  right: 5%;
-  top: 50%;
-  transform: translateY(-49%);
-  background-color: rgb(255, 200, 0);
-  color: rgb(22, 18, 0);
-  height: 40px;
-  text-transform: uppercase;
-  border: none;
-  padding: 0 15px;
-  border-radius: 222px;
-  font-weight: 550;
-  font-size: 12px;
-  letter-spacing: 1px;
-  border: 2px solid white;
-  width: fit-content;
 }
 
 .priority-order {
@@ -593,8 +456,6 @@ nav p {
   justify-content: center;
   align-items: center;
   transition: opacity 0.75s, visibility 0.75s;
-  /* background-color: rgba(106, 106, 106, 0.6); */
-  /* backdrop-filter: blur(10px); */
   z-index: 5;
 }
 
@@ -618,6 +479,140 @@ nav p {
   }
 }
 
+/* BUTTONS STYLE */
+
+.start-btn {
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+  height: 50px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 25px;
+  border-radius: 222px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border: 2px solid white;
+}
+
+/* button:active, */
+.btn:focus {
+  box-shadow: 0 0 0 3px rgb(255, 200, 0);
+}
+
+.btn:hover {
+  background-color: rgb(255, 217, 0);
+}
+.increase-btn,
+.decrease-btn {
+  border: 2px solid white !important;
+}
+
+.increase-btn,
+.decrease-btn {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+
+  text-transform: uppercase;
+
+  border-radius: 222px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+.delete-btn {
+  height: 30px;
+
+  padding: 5px 15px;
+
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+
+  text-transform: uppercase;
+
+  border-radius: 222px;
+
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid white;
+}
+
+.add-btn {
+  height: 30px;
+  margin-top: auto;
+  padding: 5px 15px;
+
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+
+  text-transform: uppercase;
+  border: none;
+
+  border-radius: 222px;
+
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid white;
+}
+.order-btn {
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+  height: 50px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 25px;
+  border-radius: 222px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border: 2px solid white;
+  width: fit-content;
+}
+.clear-btn {
+  background: none;
+  color: rgb(170, 170, 170);
+  height: 50px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 25px;
+  border-radius: 222px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border: 2px solid rgb(170, 170, 170);
+}
+.clear-btn:hover {
+  background-color: rgb(170, 170, 170);
+  color: rgb(18, 18, 18);
+
+  border: 2px solid rgb(170, 170, 170);
+}
+
+.clear-btn:focus {
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0 0 0 3px rgb(200, 200, 200);
+}
+.location-btn {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-49%);
+  background-color: rgb(255, 200, 0);
+  color: rgb(22, 18, 0);
+  height: 40px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 15px;
+  border-radius: 222px;
+  font-weight: 550;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border: 2px solid white;
+  width: fit-content;
+}
 .hidden {
   display: none;
 }
