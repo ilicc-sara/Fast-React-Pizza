@@ -4,6 +4,7 @@ import CartItem from "./cartComponents/CartItem";
 import { clearCart } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import FooterCart from "../../components/FooterCart";
+import Button from "../../components/Button";
 
 function Cart() {
   const name = useSelector((state) => state.name.name);
@@ -31,11 +32,18 @@ function Cart() {
 
           <div className="cart-btns">
             <Link to="/order/new">
-              <button className="btn order-btn">Order pizzas</button>
+              <Button variation="order" type="submit">
+                Order pizzas
+              </Button>
             </Link>
-            <button className="clear-btn" onClick={() => dispatch(clearCart())}>
-              Clear cart
-            </button>
+
+            <Button
+              variation="clear"
+              type="submit"
+              handleClick={() => dispatch(clearCart())}
+            >
+              Clear Cart
+            </Button>
           </div>
         </>
       )}

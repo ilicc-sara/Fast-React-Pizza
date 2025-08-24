@@ -4,6 +4,7 @@ import { priceSum } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Input from "../components/Input";
+import Button from "../components/Button";
 
 const URL = "https://react-fast-pizza-api";
 const URL_MAP = "https://nominatim.openstreetmap.org";
@@ -15,8 +16,9 @@ function NewOrder() {
 
   const navigate = useNavigate();
 
-  const [priority, setPriority] = useState(false);
+  const [shown, setShown] = useState(true);
 
+  const [priority, setPriority] = useState(false);
   const [inputs, setInputs] = useState({
     nameValue: name,
     phoneValue: "",
@@ -76,9 +78,13 @@ function NewOrder() {
             );
 
             const data = await response.json();
-            setAddressValue(
-              `${data.address.suburb}, ${data.address.city}, ${data.address.country}`
-            );
+            setInputs((prev) => {
+              return {
+                ...prev,
+                addressValue: `${data.address.suburb}, ${data.address.city}, ${data.address.country}`,
+              };
+            });
+            setShown(false);
 
             if (!response.ok) return;
           } catch (error) {
@@ -88,7 +94,7 @@ function NewOrder() {
         fetchLocation();
       },
       function () {
-        toast.error("Could not get our position");
+        toast.error("Could not get our position, please type your address...");
       }
     );
   }
@@ -125,15 +131,15 @@ function NewOrder() {
               handleInputChange={handleInputChange}
             />
           </div>
-          <button
-            type="button"
-            className="btn location-btn"
-            onClick={() => {
-              getMyLocation();
-            }}
-          >
-            Get Position
-          </button>
+          {shown && (
+            <Button
+              variation="location"
+              handleClick={() => getMyLocation()}
+              type="button"
+            >
+              Get Position
+            </Button>
+          )}
         </div>
 
         <div className="priority-order">
@@ -146,9 +152,9 @@ function NewOrder() {
           <p>Want to give your order priority?</p>
         </div>
 
-        <button type="submit" className="order-btn btn">
+        <Button type="submit" variation="order">
           Order now for ${sumPrice}
-        </button>
+        </Button>
       </form>
     </section>
   );

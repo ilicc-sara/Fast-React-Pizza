@@ -1,5 +1,3 @@
-import React from "react";
-
 function Button(props) {
   const { variation, type, children, value, soldOut, handleClick } = props;
 
@@ -28,6 +26,23 @@ function Button(props) {
 
   if (variation === "add") {
     modifierClassName = `${soldOut ? "hidden" : "add-btn"}`;
+  }
+
+  if (variation === "order") {
+    modifierClassName = "order-btn";
+  }
+
+  if (variation === "clear") {
+    baseClassName = "";
+    modifierClassName = "clear-btn";
+  }
+
+  if (variation === "order") {
+    modifierClassName = "order-btn";
+  }
+
+  if (variation === "location") {
+    modifierClassName = "location-btn";
   }
 
   return (
