@@ -6,6 +6,7 @@ import {
 } from "../../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import Button from "../../../components/Button";
 
 function MenuItem(props) {
   const { soldOut, img, name, ingredients, price, id } = props;
@@ -36,42 +37,49 @@ function MenuItem(props) {
         ) : (
           <div className="amount-cont amount-menu">
             <div className="amount-btns">
-              <button
-                onClick={() => dispatch(decreaseAmount({ id: id }))}
-                className="btn decrease-btn"
+              <Button
+                variation="decrease"
+                handleClick={() => dispatch(decreaseAmount({ id: id }))}
+                type="button"
               >
                 -
-              </button>
+              </Button>
+
               <span className="amount">
                 {cart.find((item) => item.pizzaId === id).quantity}
               </span>
-              <button
-                onClick={() => dispatch(increaseAmount({ id: id }))}
-                className="btn increase-btn"
+
+              <Button
+                variation="decrease"
+                handleClick={() => dispatch(increaseAmount({ id: id }))}
+                type="button"
               >
                 +
-              </button>
+              </Button>
             </div>
 
-            <button
-              onClick={() => dispatch(deleteCartItem({ id: id }))}
-              className="btn delete-btn"
+            <Button
+              variation="delete"
+              handleClick={() => dispatch(deleteCartItem({ id: id }))}
+              type="button"
             >
               Delete
-            </button>
+            </Button>
           </div>
         )}
       </div>
 
       {!itemIsInCart ? (
-        <button
-          className={`btn ${soldOut ? "hidden" : "add-btn"}`}
-          onClick={() =>
+        <Button
+          variation="add"
+          handleClick={() =>
             dispatch(addToCart({ title: name, price: price, id: id }))
           }
+          type="button"
+          soldOut={soldOut}
         >
           Add to Cart
-        </button>
+        </Button>
       ) : (
         <p className="pizza-price-second">$ {price.toFixed(2)}</p>
       )}
