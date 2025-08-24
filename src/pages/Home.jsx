@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setName } from "@/redux/slice";
+import { nameIsDefined } from "../redux/slice";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toggleLoading } from "../redux/loadingSlice";
@@ -10,8 +11,9 @@ function Home() {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const name = useSelector((state) => state.name.name);
 
+  const name = useSelector((state) => state.name.name);
+  const nameDefined = useSelector((state) => nameIsDefined(state.name));
   const loading = useSelector((state) => state.loading.isLoading);
 
   function submitForm(e) {
@@ -29,13 +31,13 @@ function Home() {
         Straight out of the oven, straight to you.
       </h1>
 
-      {name === "" && (
+      {!nameDefined && (
         <p className="welcome-text">
           👋 Welcome! Please start by telling us your name:
         </p>
       )}
 
-      {name === "" && (
+      {!nameDefined && (
         <form onSubmit={submitForm} className="name-form">
           <input
             className="input-name"
@@ -50,7 +52,7 @@ function Home() {
         </form>
       )}
 
-      {name !== "" && (
+      {nameDefined && (
         <Link to="/menu">
           <Button variation="home button continue" type="button">
             Continue Ordering, {name}
