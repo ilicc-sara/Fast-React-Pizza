@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MenuItem from "./menuComponents/MenuItem";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { cartIsEmpty } from "../../redux/cartSlice";
 import { toggleLoading } from "../../redux/loadingSlice";
 import FooterCart from "../../components/FooterCart";
 
@@ -10,7 +11,7 @@ const URL = "https://react-fast-pizza-api";
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
 
-  const cart = useSelector((state) => state.cart);
+  const emptyCart = useSelector((state) => cartIsEmpty(state));
   const loading = useSelector((state) => state.loading.isLoading);
 
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ function Menu() {
             />
           ))}
       </ul>
-      {cart.length !== 0 && <FooterCart />}
+      {!emptyCart && <FooterCart />}
     </section>
   );
 }

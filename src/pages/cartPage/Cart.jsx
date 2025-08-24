@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import CartItem from "./cartComponents/CartItem";
-import { clearCart } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/cartSlice";
+import { cartIsEmpty } from "../../redux/cartSlice";
+import CartItem from "./cartComponents/CartItem";
 import FooterCart from "../../components/FooterCart";
 import Button from "../../components/Button";
 
 function Cart() {
   const name = useSelector((state) => state.name.name);
-  const cart = useSelector((state) => state.cart);
+  const emptyCart = useSelector((state) => cartIsEmpty(state));
   const dispatch = useDispatch();
 
   return (
@@ -17,13 +18,13 @@ function Cart() {
         &larr; Back to menu
       </Link>
 
-      {cart.length === 0 && (
+      {emptyCart && (
         <p className="cart-heading">
           Your cart is still empty. Start adding some pizzas :)
         </p>
       )}
 
-      {cart.length !== 0 && (
+      {!emptyCart && (
         <>
           <div className="cart-cont">
             <p className="cart-heading">Your cart, {name}</p>
@@ -47,7 +48,7 @@ function Cart() {
           </div>
         </>
       )}
-      {cart.length !== 0 && <FooterCart />}
+      {!emptyCart && <FooterCart />}
     </section>
   );
 }

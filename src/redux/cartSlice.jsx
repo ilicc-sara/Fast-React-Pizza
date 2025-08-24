@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 import { createSelector } from "reselect";
 
 const initialState = [];
@@ -18,12 +17,9 @@ export const amountSum = createSelector([(state) => state.cart], (cart) => {
   }, 0);
 });
 
-// {
-//         title: action.payload.title,
-//         amount: 1,
-//         price: action.payload.price,
-//         id: action.payload.id,
-//       }
+export const cartIsEmpty = createSelector([(state) => state.cart], (cart) => {
+  return cart.length === 0;
+});
 
 const cartSlice = createSlice({
   name: "cartSlice",
