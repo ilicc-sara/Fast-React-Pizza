@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { toggleLoading } from "../../redux/loadingSlice";
 import FooterCart from "../../components/FooterCart";
 
+const URL = "https://react-fast-pizza-api";
+
 function Menu() {
   const [menuItems, setMenuItems] = useState([]);
 
@@ -13,12 +15,11 @@ function Menu() {
 
   const dispatch = useDispatch();
 
-  const url = `https://react-fast-pizza-api.onrender.com/api/menu`;
   useEffect(() => {
     const fetchPost = async () => {
       try {
         dispatch(toggleLoading({ isLoading: true }));
-        const response = await fetch(`${url}`);
+        const response = await fetch(`${URL}.onrender.com/api/menu`);
         const posts = await response.json();
         setMenuItems(posts.data);
 

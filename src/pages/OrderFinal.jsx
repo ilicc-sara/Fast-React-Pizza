@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { toggleLoading } from "../redux/loadingSlice";
 import { ToastContainer, toast } from "react-toastify";
 
+const URL = "https://react-fast-pizza-api";
+
 function OrderFinal() {
   const params = useParams();
   const [orderInfo, setOrderInfo] = useState(null);
@@ -32,7 +34,7 @@ function OrderFinal() {
       try {
         dispatch(toggleLoading({ isLoading: true }));
         const response = await fetch(
-          `https://react-fast-pizza-api.onrender.com/api/order/${params.orderId}`
+          `${URL}.onrender.com/api/order/${params.orderId}`
         );
         const data = await response.json();
         toast.success("Order successful");
